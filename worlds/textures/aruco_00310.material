@@ -1,0 +1,13 @@
+material image/aruco_00310
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture aruco_00310.png
+      }
+    }
+  }
+}

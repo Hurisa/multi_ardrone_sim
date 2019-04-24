@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<launch>
+
+ <node pkg="rosbag" type="record" name="marker_pose" output="screen"
+			args="record -o $(find multi_ardrone_sim)/bag/subset /aruco10/pose
+					/aruco26/pose
+					/aruco70/pose
+					/aruco114/pose
+					/aruco157/pose
+					/aruco203/pose
+					/aruco248/pose
+					/aruco310/pose
+					/aruco353/pose
+					/aruco392/pose
+					/aruco432/pose
+					/aruco472/pose
+					/aruco514/pose
+					/aruco558/pose
+					/aruco598/pose
+					/aruco658/pose
+					/aruco722/pose
+					/aruco789/pose
+					/aruco822/pose
+					/aruco861/pose
+					/aruco901/pose
+					/aruco930/pose
+					/aruco962/pose
+					/aruco1002/pose
+					/aruco1022/pose 
+					/ground_truth/state" />
+ </launch>
+

@@ -1,0 +1,13 @@
+material image/aruco_00861
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture aruco_00861.png
+      }
+    }
+  }
+}

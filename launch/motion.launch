@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<launch>
+
+	 <group ns="quadrotor1">
+		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen" />
+		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field"  	output="screen"/> 	
+		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/> 
+		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/> 
+	</group>
+
+	<group ns="quadrotor2">
+		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
+		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
+		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
+	</group> 
+	
+	<group ns="quadrotor3">
+		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
+		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
+		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
+	</group> 
+	
+	<group ns="quadrotor4">
+		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
+		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
+		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
+	</group> 
+	
+	<group ns="quadrotor5">
+		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
+		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
+		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
+	</group> 
+	
+</launch>
+

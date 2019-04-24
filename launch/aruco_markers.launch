@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+
+<launch>
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="10"/>	
+			<arg name="name" value="aruco10"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="26"/>	
+			<arg name="name" value="aruco26"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="70"/>	
+			<arg name="name" value="aruco70"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="114"/>	
+			<arg name="name" value="aruco114"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="157"/>	
+			<arg name="name" value="aruco157"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="203"/>	
+			<arg name="name" value="aruco203"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="248"/>	
+			<arg name="name" value="aruco248"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="310"/>	
+			<arg name="name" value="aruco310"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="353"/>
+			<arg name="name" value="aruco353"/>		
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="392"/>	
+			<arg name="name" value="aruco392"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="432"/>	
+			<arg name="name" value="aruco432"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="472"/>	
+			<arg name="name" value="aruco472"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="514"/>	
+			<arg name="name" value="aruco514"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="558"/>	
+			<arg name="name" value="aruco558"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="598"/>	
+			<arg name="name" value="aruco598"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="658"/>	
+			<arg name="name" value="aruco658"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="722"/>	
+			<arg name="name" value="aruco722"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="789"/>	
+			<arg name="name" value="aruco789"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="822"/>	
+			<arg name="name" value="aruco822"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="861"/>	
+			<arg name="name" value="aruco861"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="901"/>	
+			<arg name="name" value="aruco901"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="930"/>	
+			<arg name="name" value="aruco930"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="962"/>	
+			<arg name="name" value="aruco962"/>	
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="1002"/>
+			<arg name="name" value="aruco1002"/>		
+		</include>
+		
+		<include file="$(find aruco_ros)/launch/single.launch">
+			<arg name="markerId" value="1022"/>
+			<arg name="name" value="aruco1022"/>		
+		</include>
+</launch>
+

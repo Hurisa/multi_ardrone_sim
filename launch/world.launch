@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+	
+	<arg name="world"   default="$(find multi_ardrone_sim)/worlds/empty.world"/>
+	<arg name="pause" 	default="false"/>
+	<arg name="ui" 		default="true"/>	
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(arg world)"/>
+		<arg name="paused" 	value="$(arg pause)"/>
+		<arg name="gui" 		value="$(arg ui)"/>
+	</include>
+	
+</launch>
+

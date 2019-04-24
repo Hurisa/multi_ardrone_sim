@@ -1,0 +1,1657 @@
+<?xml version="1.0"?>
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <transparency>0.5</transparency>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <state world_name='default'>
+      <sim_time>1209 159000000</sim_time>
+      <real_time>37 157829189</real_time>
+      <wall_time>1548091474 297073115</wall_time>
+      <iterations>36294</iterations>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0'>
+        <pose frame=''>1.5 0.5 0.000844 3e-06 -0 0.00054</pose>
+        <scale>1 1 0.001688</scale>
+        <link name='link'>
+          <pose frame=''>1.5 0.5 0.000844 3e-06 -0 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-1.6e-05 -0.004369 -1.17599 -1.10881 0.002794 -0.000174</acceleration>
+          <wrench>-1.6e-05 -0.004369 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone'>
+        <pose frame=''>2.5 0.5 0.000844 0 3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.5 0.5 0.000844 0 3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002784 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_0'>
+        <pose frame=''>3.5 0.5 0.000844 0 3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3.5 0.5 0.000844 0 3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002794 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_1'>
+        <pose frame=''>4.5 0.5 0.000844 0 3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.5 0.5 0.000844 0 3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002784 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_10'>
+        <pose frame=''>2.5 2.5 0.000844 0 3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.5 2.5 0.000844 0 3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002784 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_11'>
+        <pose frame=''>3.5 2.5 0.000844 -3e-06 0 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3.5 2.5 0.000844 -3e-06 0 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>1.6e-05 0.004369 -1.17599 1.10881 -0.002794 -0.000174</acceleration>
+          <wrench>1.6e-05 0.004369 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_12'>
+        <pose frame=''>3.5 3.5 0.000844 0 3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3.5 3.5 0.000844 0 3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002784 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_13'>
+        <pose frame=''>2.5 3.5 0.000844 -0 -3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.5 3.5 0.000844 -0 -3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002794 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_14'>
+        <pose frame=''>1.5 3.5 0.000844 -0 -3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>1.5 3.5 0.000844 -0 -3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002784 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_15'>
+        <pose frame=''>0.5 3.5 0.000844 -0 -3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.5 3.5 0.000844 -0 -3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002794 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_16'>
+        <pose frame=''>4.5 2.5 0.000844 0 3e-06 0.000546</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.5 2.5 0.000844 0 3e-06 0.000546</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002825 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_17'>
+        <pose frame=''>4.5 3.5 0.000844 0 3e-06 0.000582</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.5 3.5 0.000844 0 3e-06 0.000582</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.003011 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_18'>
+        <pose frame=''>0.5 4.5 0.000844 0 3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.5 4.5 0.000844 0 3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002794 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_19'>
+        <pose frame=''>1.5 4.5 0.000844 -0 -3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>1.5 4.5 0.000844 -0 -3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002794 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_2'>
+        <pose frame=''>4.5 1.5 0.000844 0 3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.5 1.5 0.000844 0 3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002784 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_20'>
+        <pose frame=''>2.5 4.5 0.000844 0 3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.5 4.5 0.000844 0 3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.004369 -1.6e-05 -1.17599 -0.002784 -1.10881 -0.000173</acceleration>
+          <wrench>0.004369 -1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_21'>
+        <pose frame=''>3.5 4.5 0.000844 0 -3e-06 0.000542</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3.50001 4.5 0.000844 0 -3e-06 0.000542</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 -2.1e-05 -1.17599 0.002805 1.10881 0.000173</acceleration>
+          <wrench>-0.004369 -2.1e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_22'>
+        <pose frame=''>0.5 0.5 0.000844 -0 -3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.5 0.5 0.000844 -0 -3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002784 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_23'>
+        <pose frame=''>4.5 4.5 0.000844 3e-06 -0 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>4.5 4.5 0.000844 3e-06 -0 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-1.6e-05 -0.004369 -1.17599 -1.10881 0.002794 -0.000174</acceleration>
+          <wrench>-1.6e-05 -0.004369 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_3'>
+        <pose frame=''>3.5 1.5 0.000844 -0 -3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3.5 1.5 0.000844 -0 -3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002794 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_4'>
+        <pose frame=''>2.5 1.5 0.000844 -0 -3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>2.5 1.5 0.000844 -0 -3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002794 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_5'>
+        <pose frame=''>1.5 1.5 0.000844 -0 -3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>1.5 1.5 0.000844 -0 -3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002784 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_6'>
+        <pose frame=''>0.5 1.5 0.000844 -0 -3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.5 1.5 0.000844 -0 -3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002794 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_8'>
+        <pose frame=''>0.5 2.5 0.000844 -0 -3e-06 0.00054</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0.5 2.5 0.000844 -0 -3e-06 0.00054</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002794 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box_0_clone_9'>
+        <pose frame=''>1.5 2.5 0.000844 -0 -3e-06 0.000538</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>1.5 2.5 0.000844 -0 -3e-06 0.000538</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0.004369 1.6e-05 -1.17599 0.002784 1.10881 -0.000173</acceleration>
+          <wrench>-0.004369 1.6e-05 -1.17599 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+      <light name='user_spot_light_0'>
+        <pose frame=''>2.56516 2.22276 17.6338 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>4.8579 -0.445913 9.62459 0 1.2341 1.97127</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <model name='unit_box_0'>
+      <pose frame=''>1.5 0.5 0.000844 3e-06 -0 0.00054</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00026.material</uri>
+              <name>image/aruco_00026</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone'>
+      <pose frame=''>2.45196 0.522463 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00070.material</uri>
+              <name>image/aruco_00070</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_0'>
+      <pose frame=''>3.51751 0.539536 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00114.material</uri>
+              <name>image/aruco_00114</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_1'>
+      <pose frame=''>4.5 0.5 0.000844  0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00157.material</uri>
+              <name>image/aruco_00157</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_2'>
+      <pose frame=''>4.5 1.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00203.material</uri>
+              <name>image/aruco_00203</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_3'>
+      <pose frame=''>3.5 1.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00248.material</uri>
+              <name>image/aruco_00248</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_4'>
+      <pose frame=''>2.5 1.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00310.material</uri>
+              <name>image/aruco_00310</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_5'>
+      <pose frame=''>1.5 1.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00353.material</uri>
+              <name>image/aruco_00353</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_6'>
+      <pose frame=''>0.5 1.5  0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00392.material</uri>
+              <name>image/aruco_00392</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_8'>
+      <pose frame=''>0.5 2.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00432.material</uri>
+              <name>image/aruco_00432</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_9'>
+      <pose frame=''>1.5 2.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00472.material</uri>
+              <name>image/aruco_00472</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_10'>
+      <pose frame=''>2.5 2.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00514.material</uri>
+              <name>image/aruco_00514</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_11'>
+      <pose frame=''>3.5 2.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00558.material</uri>
+              <name>image/aruco_00558</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_12'>
+      <pose frame=''>3.5 3.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00598.material</uri>
+              <name>image/aruco_00598</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_13'>
+      <pose frame=''>2.5 3.5 0.000844 0 3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00658.material</uri>
+              <name>image/aruco_00658</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_14'>
+      <pose frame=''>1.5 3.5 0.000844 0 3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00722.material</uri>
+              <name>image/aruco_00722</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_15'>
+      <pose frame=''>0.5 3.5 0.000844 0 3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00789.material</uri>
+              <name>image/aruco_00789</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_16'>
+      <pose frame=''>4.5 2.5 0.000843 -0 4e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00822.material</uri>
+              <name>image/aruco_00822</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_17'>
+      <pose frame=''>4.5 3.5 0.000844 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00861.material</uri>
+              <name>image/aruco_00861</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_18'>
+      <pose frame=''>0.5 4.5 0.000843 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00901.material</uri>
+              <name>image/aruco_00901</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_19'>
+      <pose frame=''>1.5 4.5 0.000843 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00930.material</uri>
+              <name>image/aruco_00930</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_20'>
+      <pose frame=''>2.5 4.5 0.000843 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00962.material</uri>
+              <name>image/aruco_00962</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_21'>
+      <pose frame=''>3.5 4.5 0.000844 0 3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_01002.material</uri>
+              <name>image/aruco_01002</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <light name='user_spot_light_0' type='spot'>
+      <pose frame=''>2.56516 2.43033 10 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0 0 -1</direction>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+      <spot>
+        <inner_angle>0.6</inner_angle>
+        <outer_angle>1</outer_angle>
+        <falloff>1</falloff>
+      </spot>
+    </light>
+    <model name='unit_box_0_clone_22'>
+      <pose frame=''>0.5 0.5 0.000843 0 -3e-06 0.000539</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_00010.material</uri>
+              <name>image/aruco_00010</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box_0_clone_23'>
+      <pose frame=''>4.5 4.5 0.000845 0 3e-06 0.00054</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.001688</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://textures/aruco_01022.material</uri>
+              <name>image/aruco_01022</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+  </world>
+</sdf>

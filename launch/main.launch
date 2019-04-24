@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+
+<launch>
+	<include file="$(find multi_ardrone_sim)/launch/world.launch">
+		<arg name="world" value="$(find multi_ardrone_sim)/worlds/empty.world"/>
+		<arg name="pause" value="true"/>
+		<arg name="ui" value="true"/>		
+	</include>
+	<!-- <include file="$(find multi_ardrone_sim)/launch/empty.launch"/> -->
+	
+	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
+				<arg name="uavName" value="quadrotor1"/> 
+				<arg name="x" value="2.5"/>  	
+				<arg name="y" value="1.5"/> 
+				<arg name="yaw" value="1.57079632679"/> 
+	</include>
+	<!-- 
+	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
+				<arg name="uavName" value="quadrotor2"/> 
+				<arg name="x" value="2.5"/>  	
+				<arg name="y" value="2.5"/> 
+				<arg name="yaw" value="0"/>  	
+	</include> 
+	
+	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
+				<arg name="uavName" value="quadrotor3"/> 
+				<arg name="x" value="1.5"/>  	
+				<arg name="y" value="2.5"/> 
+				<arg name="yaw" value="1.57079632679"/>  	
+	</include> 
+	
+	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
+				<arg name="uavName" value="quadrotor4"/> 
+				<arg name="x" value="1.5"/>  	
+				<arg name="y" value="1.5"/> 
+				<arg name="yaw" value="0"/>  	
+	</include> 
+		
+	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
+				<arg name="uavName" value="quadrotor5"/> 
+				<arg name="x" value="0.5"/>  	
+				<arg name="y" value="2.5"/> 
+				<arg name="yaw" value="-1.57079632679"/>  	
+	</include> 	-->
+	
+	<node pkg="multi_ardrone_sim" 	type="flocking" 		name="flocking" 		output="screen" />	
+	<node pkg="multi_ardrone_sim" 	type="avoid_times" 	name="AvoidTimes" 	output="screen" />	
+	
+	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/markers.yaml" />
+	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/limits20.yaml" />	
+	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/namespaces.yaml" />	
+		    
+	<param name="refAltitude"			value="1400" />  <!-- in mm-->
+	<param name="useGroundTruth"	value="true" />
+	<param name="radius"			value="2.5" /> 	<!-- Neighbourhood radius -->
+	<param name="separation_radius"	value="1.5" /> 	<!-- Separation radius -->
+	
+	<param name="N"				value="5" /> 	<!-- Number of Runs -->
+	<param name="RunLength"	    value="2000" /> 	<!-- Run length in secs -->
+	<param name="Alpha"	    	value="1" />		<!-- Alignment parameter. Set to zero to igonre-->
+	
+	<param name="UseLevy"	    	value="true" />
+	<param name="miu"	    		value="2" />
+	<node pkg="rosbag" type="record" name="uav_pose" output="screen"
+			args="record -o $(find multi_ardrone_sim)/results/poses
+				/swarmState 
+				/swarmAvoid "/> 
+				
+	
+</launch>
+
