@@ -53,7 +53,7 @@ public:
 	}
 
 	void getAltitude(const ardrone_autonomy::Navdata& msg){
-		cout<<"Hello"<<endl;
+		
 		navdata=msg;
 		// range=msg;
 		altd = navdata.altd;

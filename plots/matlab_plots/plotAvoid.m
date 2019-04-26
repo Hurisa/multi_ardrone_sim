@@ -2,7 +2,7 @@ clear;
 clc;
 close;
 
-[file, path] = uigetfile({'*.*'},'Select .mat file');
+[file, path] = uigetfile({'*.mat'},'Select .mat file');
 data=load(strcat(path,file));
 
 limits=data.limits;
@@ -22,16 +22,22 @@ top=zeros(1,finalLength);
 average=zeros(1,finalLength);
 AvoidTimes=zeros(finalLength,nPoses,nRuns);
 for rr=1:nRuns
-     for pp=1:nPoses
-        
+     for pp=1:nPoses        
         counter=1;
-        times=find([data.avoidState{1,rr,pp}(:).Data]);
-        instances=size(times,2);
+        vectData=[data.avoidState{1,rr,pp}(:).Data];
+        vectData(1)=0;
+        
+        times=find(vectData);
+        prev=vectData(times-1);       
+        
+        transition=times(find(prev==0));
+        instances=size(find(prev==0),2);
         for ii=1:instances-1
-            AvoidTimes(times(ii):times(ii+1),pp,rr)=counter*timeStep;
+            AvoidTimes(transition(ii):transition(ii+1),pp,rr)=counter;%*timeStep;
             counter=counter+1;
         end
-        AvoidTimes(times(instances):finalLength,pp,rr)=counter*timeStep;
+        AvoidTimes(transition(instances):finalLength,pp,rr)=counter-1;%*timeStep;
+        
         
      end
  end    
