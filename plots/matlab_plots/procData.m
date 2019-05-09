@@ -8,20 +8,13 @@ limitsStr=split(limitsTxt);
 limits=[str2double(limitsStr{2}),str2double(limitsStr{4}),str2double(limitsStr{6}),str2double(limitsStr{8})];
 global xGrid yGrid
 
-NFiles=input(' Number of files to preproc');
-clear file path;
+d = uigetdir(pwd, 'Select a folder');
+files = dir(fullfile(d, '*.bag'));
 
-for ff=1:NFiles
-   
-    [file{ff}, path{ff}]=uigetfile({'*.*'},'Select bag file');
-    
-end
-
-for ff=1:NFiles
-
+for ff=1:size(files,1)
 
 %[file, path] = uigetfile({'*.*'},'Select bag file');
-bag=rosbag(strcat(path{ff},file{ff}));
+bag=rosbag(strcat(d,'/',files(ff).name));
 
 msg=select(bag,'Topic',strcat('/swarmState'));
 msgStruct=readMessages(msg,'DataFormat','struct');
@@ -110,7 +103,7 @@ data.poses=poses;
 data.Time=Time;
 data.limits=limits;
 
-%plotPersistCoverage(data);
+plotPersistCoverage(data);
 end
 
 

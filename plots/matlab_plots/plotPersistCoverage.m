@@ -3,8 +3,9 @@ function plotPersistCoverage(varargin)
 GridSize=0.5;
 
 
-[file, path] = uigetfile({'*.*'},'Select .mat file');
+
 if (size(varargin,2)==0)   
+    [file, path] = uigetfile({'*.*'},'Select .mat file');
     data=load(strcat(path,file));
 else
     data=varargin{1};
