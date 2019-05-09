@@ -1,7 +1,8 @@
 clear; clc;
 
-NRuns=5; %% IMPORTANT: THIS SHOULD BE GOTTEN AUTOMATICALLY %%
+NRuns=25; %% IMPORTANT: THIS SHOULD BE GOTTEN AUTOMATICALLY %%
 
+for
 [file, path] = uigetfile({'*.*'},'Select limits yaml file');
 limitsTxt = fileread(strcat(path,file)); % get the yaml file for limits
 limitsStr=split(limitsTxt);
@@ -38,9 +39,11 @@ coverage=cell(1,NRuns);
 avoidState=cell(1,NRuns,Nposes);
 run=1; 
 iter=1;
-poses=cell(NRuns,Nposes);
+poses.position=cell(NRuns,Nposes);
+poses.orientation=cell(NRuns,Nposes);
 
 for t=1:size(msgStruct)
+    
     if size((AvoidmsgStruct{t,1}.State),2)>0
         if (t>1 && double(msgStruct{t,1}.Run)<double(msgStruct{t-1,1}.Run) )
             iter=1;
@@ -53,8 +56,9 @@ for t=1:size(msgStruct)
         end
         
         for u=1:Nposes
-            [Xplace, Yplace, xpos, ypos]=getXY(msgStruct{t,1},u);
-            poses{run,u}(iter,:)=[xpos, ypos];
+            [Xplace, Yplace, xpos, ypos, qx, qy, qz, qw]=getXYQ(msgStruct{t,1},u);
+            poses.position{run,u}(iter,:)=[xpos, ypos];
+            poses.orientation{run,u}(iter,:)=[qx, qy, qz, qw];
             if (limits(1)<xpos && xpos<limits(2) && limits(3)<ypos && ypos<limits(4))
                 if (Area(Xplace,Yplace)==0)
                     Area(Xplace,Yplace)=1;
@@ -74,8 +78,11 @@ for rr=1:NRuns
     coverage{rr}=coverage{rr}(1:finalLength);
     coverage{rr}(1:5)=[];
     for pp=1:Nposes
-        poses{rr,pp}=poses{rr,pp}(1:finalLength,:); % clean up the end
-        poses{rr,pp}(1:5,:)=[];                     % clean up the begining
+        poses.position{rr,pp}=poses.position{rr,pp}(1:finalLength,:); % clean up the end
+        poses.position{rr,pp}(1:5,:)=[];                     % clean up the begining
+        
+        poses.orientation{rr,pp}=poses.orientation{rr,pp}(1:finalLength,:); % clean up the end
+        poses.orientation{rr,pp}(1:5,:)=[];                     % clean up the begining
         
         avoidState{1,rr,pp}=avoidState{1,rr,pp}(1:finalLength,:);
         avoidState{1,rr,pp}(1:5,:)=[];
@@ -91,9 +98,9 @@ data.poses=poses;
 data.Time=Time;
 data.limits=limits;
 
-plotPersistCoverage(data);
+%plotPersistCoverage(data);
 
-function [Xplace, Yplace, xpos, ypos]=getXY(msg,n)
+function [Xplace, Yplace, xpos, ypos, qx, qy, qz, qw]=getXYQ(msg,n)
 global xGrid yGrid
 
         tmpX=xGrid;
@@ -108,5 +115,11 @@ global xGrid yGrid
         
         xpos=msg.Poses(n).Position.X;
         ypos=msg.Poses(n).Position.Y;
+        
+        qx=msg.Poses(n).Orientation.X;
+        qy=msg.Poses(n).Orientation.Y;
+        qz=msg.Poses(n).Orientation.Z;
+        qw=msg.Poses(n).Orientation.W;
+        
         
 end
