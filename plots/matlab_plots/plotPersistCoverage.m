@@ -22,9 +22,9 @@ NCells=size(xGrid,2);
     
 Len = cellfun(@length, data.coverage, 'UniformOutput', false);
 finalLength=min([Len{:}]);
-nRuns = size(data.poses,1);
-nUAVs = size(data.poses,2);
-nIter = size(data.poses{1},1);   
+nRuns = size(data.poses.position,1);
+nUAVs = size(data.poses.position,2);
+nIter = size(data.poses.position{1},1);   
 
 timeStep=(data.Time/finalLength);
 
@@ -37,8 +37,8 @@ for rr=1:nRuns
         for ggX=1:NCells-1
             for ggY=1:NCells-1
                                 
-                a=find(data.poses{rr,uu}(:,1)<xGrid(ggX+1) & data.poses{rr,uu}(:,1)>xGrid(ggX));
-                b=find(data.poses{rr,uu}(:,2)<xGrid(ggY+1) & data.poses{rr,uu}(:,2)>xGrid(ggY));
+                a=find(data.poses.position{rr,uu}(:,1)<xGrid(ggX+1) & data.poses.position{rr,uu}(:,1)>xGrid(ggX));
+                b=find(data.poses.position{rr,uu}(:,2)<xGrid(ggY+1) & data.poses.position{rr,uu}(:,2)>xGrid(ggY));
                 nHits=size(intersect(a,b),1);                
                 Area(ggX,ggY,rr)=Area(ggX,ggY,rr)+timeStep*nHits;
                
