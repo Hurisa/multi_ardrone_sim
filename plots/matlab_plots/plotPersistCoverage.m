@@ -2,8 +2,6 @@ function plotPersistCoverage(varargin)
 
 GridSize=0.5;
 
-
-
 if (size(varargin,2)==0)   
     [file, path] = uigetfile({'*.*'},'Select .mat file');
     data=load(strcat(path,file));
@@ -55,7 +53,6 @@ colormap('parula');
 meanArea=mean(Area,3);
 
 CellsAboveThres=size(find(meanArea>=colorbarLimits(2)*thresh),1)/(size(meanArea,1)*size(meanArea,2));
-
 
 imagesc(xGrid,yGrid,meanArea);
 colorbar;

@@ -17,9 +17,19 @@ for ff=1:size(files,1)
 bag=rosbag(strcat(d,'/',files(ff).name));
 
 msg=select(bag,'Topic',strcat('/swarmState'));
-msgStruct=readMessages(msg,'DataFormat','struct');
 
+nInter=1000;
+chunck=round(size(bag.MessageList,1)/nInter);
 
+msgStruct=cell(size(bag.MessageList,1),1);
+msgStruct(1:chunck,1)=readMessages(msg,1:chunck,'DataFormat','struct');
+for nn=2:nInter-1
+    nn
+    msgStruct((nn-1)*chunck+1:nn*chunck,1)=readMessages(msg,(nn-1)*chunck+1:nn*chunck,'DataFormat','struct');    
+end
+msgStruct((nInter-1)*chunck+1:size(bag.MessageList,1),1)=readMessages(msg,(nInter-1)*chunck+1:size(bag.MessageList,1),'DataFormat','struct');
+
+%msgStruct=readMessages(msg,'DataFormat','struct');
 %%Avoidmsg=select(bag,'Topic',strcat('/swarmAvoid'));
 %%AvoidmsgStruct=readMessages(Avoidmsg,'DataFormat','struct');
 
@@ -93,7 +103,7 @@ for rr=1:NRuns
         %avoidState{1,rr,pp}(1:5,:)=[];
     end
 end
-
+file=files(ff).name;
 filename=strcat(file(1:length(file)-4),'.mat');
 save(filename,'coverage','poses','Time','limits');
 
