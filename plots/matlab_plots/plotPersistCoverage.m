@@ -7,6 +7,7 @@ if (size(varargin,2)==0)
     data=load(strcat(path,file));
 else
     data=varargin{1};
+    file=varargin{2};
 end
 
 limits=data.limits;
@@ -14,7 +15,7 @@ limits=data.limits;
 xGrid=limits(1):GridSize:limits(2);
 yGrid=limits(3):GridSize:limits(4);
 
-colorbarLimits=[0 35];
+colorbarLimits=[0 40];
 thresh=0.5;
 
 NCells=size(xGrid,2);

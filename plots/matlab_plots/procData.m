@@ -12,7 +12,7 @@ d = uigetdir(pwd, 'Select a folder');
 files = dir(fullfile(d, '*.bag'));
 
 for ff=1:size(files,1)
-
+ff
 %[file, path] = uigetfile({'*.*'},'Select bag file');
 bag=rosbag(strcat(d,'/',files(ff).name));
 
@@ -21,13 +21,16 @@ msg=select(bag,'Topic',strcat('/swarmState'));
 nInter=1000;
 chunck=round(size(bag.MessageList,1)/nInter);
 
-msgStruct=cell(size(bag.MessageList,1),1);
-msgStruct(1:chunck,1)=readMessages(msg,1:chunck,'DataFormat','struct');
-for nn=2:nInter-1
-    nn
-    msgStruct((nn-1)*chunck+1:nn*chunck,1)=readMessages(msg,(nn-1)*chunck+1:nn*chunck,'DataFormat','struct');    
-end
-msgStruct((nInter-1)*chunck+1:size(bag.MessageList,1),1)=readMessages(msg,(nInter-1)*chunck+1:size(bag.MessageList,1),'DataFormat','struct');
+msgStruct=readMessages(msg,'DataFormat','struct');
+
+
+% msgStruct=cell(size(bag.MessageList,1),1);
+% msgStruct(1:chunck,1)=readMessages(msg,1:chunck,'DataFormat','struct');
+% for nn=2:nInter-1
+%     nn
+%     msgStruct((nn-1)*chunck+1:nn*chunck,1)=readMessages(msg,(nn-1)*chunck+1:nn*chunck,'DataFormat','struct');    
+% end
+% msgStruct((nInter-1)*chunck+1:size(bag.MessageList,1),1)=readMessages(msg,(nInter-1)*chunck+1:size(bag.MessageList,1),'DataFormat','struct');
 
 %msgStruct=readMessages(msg,'DataFormat','struct');
 %%Avoidmsg=select(bag,'Topic',strcat('/swarmAvoid'));

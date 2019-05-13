@@ -18,9 +18,9 @@ nRuns=size(data.coverage,2);
 
 
 x=0:timeStep:(data.Time);
-bottom=zeros(1,finalLength);
-top=zeros(1,finalLength);
-average=zeros(1,finalLength);
+% bottom=zeros(1,finalLength);
+% top=zeros(1,finalLength);
+% average=zeros(1,finalLength);
 AvoidHits=zeros(finalLength,nPoses,nRuns);
 Order=zeros(finalLength,nPoses,nRuns);
 
@@ -122,6 +122,7 @@ function N=GetNeigbhours(poses,i)
     N((d<=radius))=1;
 end
 
+
 function O=EvalOrder(N,qCell)
     Npos=find(N==1);
     if size(Npos,2)>1
@@ -134,14 +135,12 @@ function O=EvalOrder(N,qCell)
         O=norm(sum(exp(yaw.*1i)))/(size(yaw,2));
     else
         O=0;
-    end
-    
-    
+    end   
 end
 
 
 function  CumulativeTimes=getCTs(EvalHits,timeStep)
-    finalLength=size(EvalHits,1);
+    %finalLength=size(EvalHits,1);
     nPoses=size(EvalHits,2);
     nRuns=size(EvalHits,3);
 
@@ -152,6 +151,5 @@ function  CumulativeTimes=getCTs(EvalHits,timeStep)
            CumulativeTimes(:,pp,rr)=cumsum(EvalHits(:,pp,rr)).*timeStep;
 
         end
-    end
-    
+    end    
 end
