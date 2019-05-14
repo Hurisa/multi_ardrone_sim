@@ -29,7 +29,7 @@ for s=1:numSubFolders
         Time=(msg.EndTime-msg.StartTime);
         msgCell=readMessages(msg,'DataFormat','struct');
 
-        while msgCell{1}.Run~=1 
+        while msgCell{1}.Run>msgCell{2}.Run || msgCell{1}==0
             msgCell(1)=[];
         end
 
