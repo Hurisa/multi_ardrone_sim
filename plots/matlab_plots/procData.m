@@ -1,6 +1,6 @@
 clear; clc;
 
-NRuns=25; %% IMPORTANT: THIS SHOULD BE GOTTEN AUTOMATICALLY %%
+NRuns=1; %% IMPORTANT: THIS SHOULD BE GOTTEN AUTOMATICALLY %%
 
 [file, path] = uigetfile({'*.*'},'Select limits yaml file');
 limitsTxt = fileread(strcat(path,file)); % get the yaml file for limits

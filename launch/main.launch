@@ -10,58 +10,58 @@
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor1"/> 
-				<arg name="x" value="2.5"/>  	
-				<arg name="y" value="1.5"/> 
-				<arg name="yaw" value="1.57079632679"/> 
+				<arg name="x" value="1"/>  	
+				<arg name="y" value="1"/> 
+				<arg name="yaw" value="0.785398163"/> 
 	</include>
-	<!-- 
+
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor2"/> 
-				<arg name="x" value="2.5"/>  	
-				<arg name="y" value="2.5"/> 
+				<arg name="x" value="1"/>  	
+				<arg name="y" value="4"/> 
 				<arg name="yaw" value="0"/>  	
 	</include> 
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor3"/> 
-				<arg name="x" value="1.5"/>  	
-				<arg name="y" value="2.5"/> 
-				<arg name="yaw" value="1.57079632679"/>  	
+				<arg name="x" value="1"/>  	
+				<arg name="y" value="7"/> 
+				<arg name="yaw" value="-0.785398163"/>  	
 	</include> 
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor4"/> 
-				<arg name="x" value="1.5"/>  	
-				<arg name="y" value="1.5"/> 
-				<arg name="yaw" value="0"/>  	
+				<arg name="x" value="4"/>  	
+				<arg name="y" value="1"/> 
+				<arg name="yaw" value="1.57079632679"/>  	
 	</include> 
 		
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor5"/> 
-				<arg name="x" value="0.5"/>  	
-				<arg name="y" value="2.5"/> 
-				<arg name="yaw" value="-1.57079632679"/>  	
-	</include> 	-->
+				<arg name="x" value="7"/>  	
+				<arg name="y" value="1"/> 
+				<arg name="yaw" value="2.35619449019"/>  	
+	</include> 	
 	
-		<node pkg="multi_ardrone_sim" 	type="flocking" 		name="flocking" 		output="screen" />	
+	<node pkg="multi_ardrone_sim" 	type="flocking" 		name="flocking" 		output="screen" />	
 	<node pkg="multi_ardrone_sim" 	type="avoid_times" 		name="AvoidTimes" 	output="screen" />	
 	
 	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/markers.yaml" />
-	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/limits20.yaml" />	
+	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/limits10.yaml" />	
 	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/namespaces.yaml" />	
 		    
-	<param name="refAltitude"			    value="1.4" />
+	<param name="refAltitude"			    value="1400" />
 	<param name="useGroundTruth"		value="true" />
 	<param name="radius"				value="2.5" /> 	<!-- Neighbourhood radius -->
 	<param name="separation_radius"		value="1.5" /> 	<!-- Separation radius -->
 	
-	<arg name="argN"					value="25" /> 	<!-- Number of Runs -->
-	<arg name="argRunLength"	    	value="2500" /> 	<!-- Run length in secs -->
+	<arg name="argN"					value="1" /> 	<!-- Number of Runs -->
+	<arg name="argRunLength"	    	value="100" /> 	<!-- Run length in secs -->
 	<arg name="argAlpha"	    		value="1" />		<!-- Alignment parameter. Set to zero to igonre-->
-	<arg name="argUseLevy"	    		value="true" />
-	<arg name="argmiu"	    			value="2.8" />
-	<arg name="limit"	    			    value="20" />
-	<arg name="nAgents"	    			value="15" />
+	<arg name="argUseLevy"	    		value="false" />
+	<arg name="argmiu"	    			value="2" />
+	<arg name="limit"	    			    value="10" />
+	<arg name="nAgents"	    			value="5" />
 
 
 

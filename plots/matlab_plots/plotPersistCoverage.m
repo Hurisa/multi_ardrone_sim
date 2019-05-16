@@ -15,7 +15,8 @@ limits=data.limits;
 xGrid=limits(1):GridSize:limits(2);
 yGrid=limits(3):GridSize:limits(4);
 
-colorbarLimits=[0 35];
+%colorbarLimits=[0 35];
+colorbarLimits=[0 40];
 thresh=0.5;
 
 NCells=size(xGrid,2);
@@ -52,7 +53,7 @@ end
 figure
 colormap('parula');
 meanArea=mean(Area,3);
-
+set(gcf,'Position',[100 100 800 800])
 CellsAboveThres=size(find(meanArea>=colorbarLimits(2)*thresh),1)/(size(meanArea,1)*size(meanArea,2));
 
 imagesc(xGrid,yGrid,meanArea);
@@ -67,6 +68,14 @@ saveas(gcf,strcat('PCov_',file(1:length(file)-4),'.png'))
 %     x(:,size(x,2))=[];
 % end
 
+% figure(2)
+% [X,Y] = meshgrid(xGrid(1,1:size(xGrid,2)-1),yGrid(1,1:size(yGrid,2)-1));
+% set(gcf,'Position',[100 100 800 800])
+% contourf(X,Y,meanArea,7,'k')
+% colorbar;
+% caxis(colorbarLimits)
+% title({strcat('\mu = ',file(length(file)-6:length(file)-4)) })
+% saveas(gcf,strcat('contour_PCov_',file(1:length(file)-4),'.png'))
 end
 
 

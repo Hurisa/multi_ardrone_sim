@@ -4,9 +4,8 @@ files = dir(fullfile(strcat(d,'/','*.mat')));
 numFiles=size(files,1);
 
 for s=1:numFiles
-    
-    current=load(files(s).name);
-    data=current.data;
+    s
+    data=load(strcat(d,'/',files(s).name));
     filename=files(s).name;
     
     plotPersistCoverage(data,filename);
