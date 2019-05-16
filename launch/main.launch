@@ -116,18 +116,18 @@
 	<node pkg="multi_ardrone_sim" 	type="avoid_times" 		name="AvoidTimes" 	output="screen" />	
 	
 	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/markers.yaml" />
-	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/limits10.yaml" />	
+	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/limits20.yaml" />	
 	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/namespaces.yaml" />	
 		    
 	<param name="refAltitude"			    value="1400" />
 	<param name="useGroundTruth"		value="true" />
 	<param name="radius"				value="2.5" /> 	<!-- Neighbourhood radius -->
 	<param name="separation_radius"		value="1.5" /> 	<!-- Separation radius -->
-	<param name="velx"					value="0.15" /> 	<!-- Forward velocity -->
+	<param name="velx"					value="0.2" /> 	<!-- Forward velocity -->
 	
 	<arg name="argN"					value="1" /> 	<!-- Number of Runs -->
 	<arg name="argRunLength"	    	value="100" /> 	<!-- Run length in secs -->
-	<arg name="argAlpha"	    		value="1" />		<!-- Alignment parameter. Set to zero to igonre-->
+	<arg name="argAlpha"	    		value="0" />		<!-- Alignment parameter. Set to zero to igonre-->
 	<arg name="argUseLevy"	    		value="false" />
 	<arg name="argmiu"	    			value="2" />
 	<arg name="limit"	    			    value="10" />
