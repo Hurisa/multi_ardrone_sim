@@ -46,7 +46,8 @@ private:
 	string ns;
 
 
-	double altitude;
+
+	double altitude, velx;
 	bool takeoff, avoid;
 
 public:
@@ -66,6 +67,7 @@ public:
 		ns	= ros::this_node::getNamespace();
 
 		nh.getParam("/UseLevy", levy);
+		nh.getParam("/velx", velx);
 	}
 
 	void getFieldVel(const geometry_msgs::Twist& msg){		
@@ -105,7 +107,7 @@ public:
 			Velocity.angular=tf2::toMsg(fieldVel);
 			Velocity.linear=tf2::toMsg(Linflocking);
 			if (Velocity.linear.x==0){
-				Velocity.linear.x=0.2;
+				Velocity.linear.x=velx;
 			}
 		}
 		else{
@@ -113,15 +115,15 @@ public:
 				Velocity.angular=LevyTwist.angular;
 				Velocity.linear=tf2::toMsg(Linflocking);
 				if (Velocity.linear.x==0){
-					Velocity.linear.x=0.2;
+					Velocity.linear.x=velx;
 				}
 			}
 			else{
 			    Velocity.angular=tf2::toMsg(Angflocking);
 			    //Velocity.linear=tf2::toMsg(Linflocking);
-			    if (!avoid){Velocity.linear.x=0.2;}
-				else{Velocity.linear.x=0.1;}
-
+			    //if (!avoid){Velocity.linear.x=0.1;}
+				//else{Velocity.linear.x=0.1;}
+			    Velocity.linear.x=0.1;
 				Velocity.linear.y=0;
 			}
 		}
