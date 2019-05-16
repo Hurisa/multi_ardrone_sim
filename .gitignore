@@ -1,4 +1,5 @@
 results/
 /plots/matlab_plots/mat_files/
+/plots/matlab_plots/ignore
 /plots/matlab_plots/*.mat
 /plots/matlab_plots/*.png
