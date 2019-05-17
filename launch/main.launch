@@ -128,6 +128,7 @@
 	<arg name="argN"					value="1" /> 	<!-- Number of Runs -->
 	<arg name="argRunLength"	    	value="100" /> 	<!-- Run length in secs -->
 	<arg name="argAlpha"	    		value="1" />		<!-- Alignment parameter. Set to zero to igonre-->
+	<arg name="Gamma"					value="1.5" />	<!-- Separation weight-->
 	<arg name="argUseLevy"	    		value="false" />
 	<arg name="argmiu"	    			value="2.0" />
 	<arg name="limit"	    			    value="20" />
@@ -138,8 +139,8 @@
 	<param name="N"				value="$(arg argN)" /> 	<!-- Number of Runs -->
 	<param name="RunLength"	    value="$(arg argRunLength)" /> 	<!-- Run length in secs -->
 	<param name="Alpha"	    	value="$(arg argAlpha)" />		<!-- Alignment parameter. Set to zero to igonre-->
-	<param name="UseLevy"	    value="$(arg argUseLevy)" />
-	<param name="miu"	    	value="$(arg argmiu)" />
+	<param name="UseLevy"	    	value="$(arg argUseLevy)" />
+	<param name="miu"	    		value="$(arg argmiu)" />
 
 	<node pkg="rosbag" type="record" name="uav_pose" output="screen"
 			args="record --split --duration=$(arg argRunLength) -o $(find multi_ardrone_sim)/results/$(arg argUseLevy)_Alpha_$(arg argAlpha)_$(arg nAgents)_$(arg limit)x$(arg limit)_$(arg argN)x$(arg argRunLength)_$(arg argmiu)
