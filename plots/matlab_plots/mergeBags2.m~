@@ -32,11 +32,7 @@ for s=1:numSubFolders
         while msgCell{1}.Run>msgCell{2}.Run || msgCell{1}.Run==0
             msgCell(1)=[];
         end
-        
-        a=[msgCell{:,1}];
-        b=([a.Run]);
-        msgCell(find(b==0))=[];
-        
+        msgCell()=[]
         Nposes=size(msgCell{1,1}.Poses,2);
         Area=zeros(size(xGrid,2)-1,size(yGrid,2)-1);
 

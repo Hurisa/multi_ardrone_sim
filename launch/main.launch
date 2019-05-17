@@ -127,11 +127,11 @@
 	
 	<arg name="argN"					value="1" /> 	<!-- Number of Runs -->
 	<arg name="argRunLength"	    	value="100" /> 	<!-- Run length in secs -->
-	<arg name="argAlpha"	    		value="0" />		<!-- Alignment parameter. Set to zero to igonre-->
+	<arg name="argAlpha"	    		value="1" />		<!-- Alignment parameter. Set to zero to igonre-->
 	<arg name="argUseLevy"	    		value="false" />
-	<arg name="argmiu"	    			value="2" />
-	<arg name="limit"	    			    value="10" />
-	<arg name="nAgents"	    			value="5" />
+	<arg name="argmiu"	    			value="2.0" />
+	<arg name="limit"	    			    value="20" />
+	<arg name="nAgents"	    			value="15" />
 
 
 

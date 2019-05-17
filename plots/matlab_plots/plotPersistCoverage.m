@@ -16,7 +16,7 @@ xGrid=limits(1):GridSize:limits(2);
 yGrid=limits(3):GridSize:limits(4);
 
 %colorbarLimits=[0 35];
-colorbarLimits=[0 40];
+colorbarLimits=[0 20];
 thresh=0.5;
 
 NCells=size(xGrid,2);

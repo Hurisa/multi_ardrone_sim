@@ -123,7 +123,7 @@ public:
 			    //Velocity.linear=tf2::toMsg(Linflocking);
 			    //if (!avoid){Velocity.linear.x=0.1;}
 				//else{Velocity.linear.x=0.1;}
-			    Velocity.linear.x=0.1;
+			    Velocity.linear.x=velx;
 				Velocity.linear.y=0;
 			}
 		}
