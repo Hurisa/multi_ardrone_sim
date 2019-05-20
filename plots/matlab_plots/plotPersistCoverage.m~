@@ -44,9 +44,8 @@ for rr=1:nRuns
                 nHits=size(intersect(a,b),1);                
                 %Area(ggX,ggY,rr)=Area(ggX,ggY,rr)+timeStep*nHits;
                 
-                xSense=[max(1,ggX-(sradius/GridSize)):min(size(Area,1),ggX+(sradius/GridSize))];
-                ySense=[max(1,ggY-(sradius/GridSize)):min(size(Area,1),ggY+(sradius/GridSize))];
-                Area(xSense,ySense,rr)=Area(xSense,ySense,rr)+timeStep*nHits;
+                xSense=[max(1,ggX-(sradius/GridSize)):min()]
+                Area(ggX-(sradius/GridSize):ggX+(sradius/GridSize),ggY,rr)=Area(ggX,ggY,rr)+timeStep*nHits;
                
             end
         end
@@ -68,7 +67,7 @@ xlabel('X [m]')
 ylabel('Y [m]')
 title({strcat('\mu = ',file(length(file)-6:length(file)-4)) })
 set(gca,'YDir','normal')
-%saveas(gcf,strcat('PCov_',file(1:length(file)-4),'.png'))
+saveas(gcf,strcat('PCov_',file(1:length(file)-4),'.png'))
 % while size(x,2)>finalLength
 %     x(:,size(x,2))=[];
 % end
