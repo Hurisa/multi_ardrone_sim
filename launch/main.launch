@@ -128,7 +128,7 @@
 	<arg name="argN"					value="1" /> 	<!-- Number of Runs -->
 	<arg name="argRunLength"	    	value="100" /> 	<!-- Run length in secs -->
 	<arg name="argAlpha"	    		value="1" />		<!-- Alignment parameter. Set to zero to igonre-->
-	<arg name="Gamma"					value="1.5" />	<!-- Separation weight-->
+	<arg name="Gamma"					value="3	" />	<!-- Separation weight-->
 	<arg name="argUseLevy"	    		value="false" />
 	<arg name="argmiu"	    			value="2.0" />
 	<arg name="limit"	    			    value="20" />

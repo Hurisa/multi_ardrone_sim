@@ -29,7 +29,7 @@ for s=1:numSubFolders
         Time=(msg.EndTime-msg.StartTime);
         msgCell=readMessages(msg,'DataFormat','struct');
 
-        while msgCell{1}.Run>msgCell{2}.Run || msgCell{1}.Run==0
+        while msgCell{1}.Run>1 || msgCell{1}.Run==0
             msgCell(1)=[];
         end
         
@@ -81,7 +81,7 @@ for s=1:numSubFolders
     data.Time=Time;
     data.limits=limits;
 
-    plotPersistCoverage(data,filename);
+    %plotPersistCoverage(data,filename);
 
 end
 
