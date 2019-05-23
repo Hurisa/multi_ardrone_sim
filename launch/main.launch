@@ -8,107 +8,107 @@
 			
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor1"/> 
-				<arg name="x" value="2.5"/>  	
-				<arg name="y" value="1.5"/> 
+				<arg name="x" value="0.5"/>  	
+				<arg name="y" value="0.5"/> 
 				<arg name="yaw" value="1.57079632679"/> 
 	</include>
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor2"/> 
 				<arg name="x" value="2.5"/>  	
-				<arg name="y" value="2.5"/> 
+				<arg name="y" value="0.5"/> 
 				<arg name="yaw" value="0"/>  	
 	</include> 
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor3"/> 
-				<arg name="x" value="1.5"/>  	
-				<arg name="y" value="2.5"/> 
+				<arg name="x" value="3.5"/>  	
+				<arg name="y" value="0.5"/> 
 				<arg name="yaw" value="1.57079632679"/>  	
 	</include> 
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor4"/> 
-				<arg name="x" value="1.5"/>  	
-				<arg name="y" value="1.5"/> 
+				<arg name="x" value="5"/>  	
+				<arg name="y" value="0.5"/> 
 				<arg name="yaw" value="0"/>  	
 	</include> 
 		
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor5"/> 
 				<arg name="x" value="0.5"/>  	
-				<arg name="y" value="2.5"/> 
+				<arg name="y" value="2"/> 
 				<arg name="yaw" value="-1.57079632679"/>  	
 	</include> 	
 
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor6"/> 
-				<arg name="x" value="5.5"/>  	
-				<arg name="y" value="1.5"/> 
+				<arg name="x" value="3"/>  	
+				<arg name="y" value="2"/> 
 				<arg name="yaw" value="1.57079632679"/> 
 	</include>
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor7"/> 
-				<arg name="x" value="2.5"/>  	
-				<arg name="y" value="5.5"/> 
+				<arg name="x" value="4.5"/>  	
+				<arg name="y" value="2"/> 
 				<arg name="yaw" value="0"/>  	
 	</include> 
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor8"/> 
-				<arg name="x" value="1.5"/>  	
-				<arg name="y" value="5.5"/> 
+				<arg name="x" value="6"/>  	
+				<arg name="y" value="2"/> 
 				<arg name="yaw" value="1.57079632679"/>  	
 	</include> 
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor9"/> 
-				<arg name="x" value="4.5"/>  	
-				<arg name="y" value="1.5"/> 
+				<arg name="x" value="7.5"/>  	
+				<arg name="y" value="2"/> 
 				<arg name="yaw" value="0"/>  	
 	</include> 
 		
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor10"/> 
-				<arg name="x" value="4.5"/>  	
-				<arg name="y" value="2.5"/> 
+				<arg name="x" value="9"/>  	
+				<arg name="y" value="2"/> 
 				<arg name="yaw" value="-1.57079632679"/>  	
 	</include> 
 	
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor11"/> 
-				<arg name="x" value="5.5"/>  	
-				<arg name="y" value="-1.5"/> 
+				<arg name="x" value="1.5"/>  	
+				<arg name="y" value="0.5"/> 
 				<arg name="yaw" value="1.57079632679"/> 
 	</include>
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor12"/> 
-				<arg name="x" value="-2.5"/>  	
-				<arg name="y" value="5.5"/> 
+				<arg name="x" value="1.5"/>  	
+				<arg name="y" value="2.5"/> 
 				<arg name="yaw" value="0"/>  	
 	</include> 
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor13"/> 
-				<arg name="x" value="-1.5"/>  	
-				<arg name="y" value="5.5"/> 
+				<arg name="x" value="2.5"/>  	
+				<arg name="y" value="3.5"/> 
 				<arg name="yaw" value="1.57079632679"/>  	
 	</include> 
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor14"/> 
-				<arg name="x" value="4.5"/>  	
-				<arg name="y" value="-1.5"/> 
+				<arg name="x" value="3.5"/>  	
+				<arg name="y" value="4.5"/> 
 				<arg name="yaw" value="0"/>  	
 	</include> 
 		
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor15"/> 
 				<arg name="x" value="4.5"/>  	
-				<arg name="y" value="-2.5"/> 
+				<arg name="y" value="5.5"/> 
 				<arg name="yaw" value="-1.57079632679"/>  	
 	</include> 
 
@@ -129,7 +129,7 @@
 	<arg name="argRunLength"	    	value="100" /> 	<!-- Run length in secs -->
 	<arg name="argAlpha"	    		value="1" />		<!-- Alignment parameter. Set to zero to igonre-->
 	<arg name="Gamma"					value="3	" />	<!-- Separation weight-->
-	<arg name="argUseLevy"	    		value="false" />
+	<arg name="argUseLevy"	    		value="true" />
 	<arg name="argmiu"	    			value="2.0" />
 	<arg name="limit"	    			    value="20" />
 	<arg name="nAgents"	    			value="15" />

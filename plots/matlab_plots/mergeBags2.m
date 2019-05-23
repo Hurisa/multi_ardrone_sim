@@ -29,7 +29,7 @@ for s=1:numSubFolders
         Time=(msg.EndTime-msg.StartTime);
         msgCell=readMessages(msg,'DataFormat','struct');
 
-        while msgCell{1}.Run>1 || msgCell{1}.Run==0
+        while msgCell{1}.Run>5 || msgCell{1}.Run==0
             msgCell(1)=[];
         end
         
@@ -74,7 +74,7 @@ for s=1:numSubFolders
     %bars=find(d=='/');
     %filename=strcat(d(bars(size(bars,2))+1:length(d)),'.mat');
     filename=strcat(subFolders(s).name,'.mat');
-    save(filename,'coverage','poses','Time','limits');
+    save(filename,'coverage','poses','Time','limits','-v7.3');
 
     data.coverage=coverage;
     data.poses=poses;
