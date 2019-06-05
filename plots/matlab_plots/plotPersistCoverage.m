@@ -68,7 +68,7 @@ xlabel('X [m]')
 ylabel('Y [m]')
 title({strcat('\mu = ',file(length(file)-6:length(file)-4)) })
 set(gca,'YDir','normal')
-%saveas(gcf,strcat('PCov_',file(1:length(file)-4),'.png'))
+saveas(gcf,strcat('PCov_',file(1:length(file)-4),'.png'))
 % while size(x,2)>finalLength
 %     x(:,size(x,2))=[];
 % end
