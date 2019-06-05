@@ -1,6 +1,7 @@
 function plotPersistCoverage(varargin)
 
 GridSize=0.5;
+sradius=0.5; %how many times gridsize?
 
 if (size(varargin,2)==0)   
     [file, path] = uigetfile({'*.*'},'Select .mat file');
@@ -16,7 +17,7 @@ xGrid=limits(1):GridSize:limits(2);
 yGrid=limits(3):GridSize:limits(4);
 
 %colorbarLimits=[0 35];
-colorbarLimits=[0 40];
+colorbarLimits=[5 25];
 thresh=0.5;
 
 NCells=size(xGrid,2);
@@ -41,7 +42,11 @@ for rr=1:nRuns
                 a=find(data.poses.position{rr,uu}(:,1)<xGrid(ggX+1) & data.poses.position{rr,uu}(:,1)>xGrid(ggX));
                 b=find(data.poses.position{rr,uu}(:,2)<xGrid(ggY+1) & data.poses.position{rr,uu}(:,2)>xGrid(ggY));
                 nHits=size(intersect(a,b),1);                
-                Area(ggX,ggY,rr)=Area(ggX,ggY,rr)+timeStep*nHits;
+                %Area(ggX,ggY,rr)=Area(ggX,ggY,rr)+timeStep*nHits;
+                
+                xSense=[max(1,ggX-(sradius/GridSize)):min(size(Area,1),ggX+(sradius/GridSize))];
+                ySense=[max(1,ggY-(sradius/GridSize)):min(size(Area,1),ggY+(sradius/GridSize))];
+                Area(xSense,ySense,rr)=Area(xSense,ySense,rr)+timeStep*nHits;
                
             end
         end

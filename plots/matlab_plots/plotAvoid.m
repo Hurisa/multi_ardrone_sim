@@ -1,10 +1,20 @@
-clear;
-clc;
-close;
+
 global radius
 radius=1.5;
-[file, path] = uigetfile({'*.mat'},'Select .mat file');
-data=load(strcat(path,file));
+
+
+[file{1}, path{1}] = uigetfile({'*.*'},'Select 1st .mat file');
+%data=load(strcat(path,file));
+
+[file{2}, path{2}] = uigetfile({'*.*'},'Select 2nd .mat file');
+%
+colour={'blue','red'};
+figure
+hold on
+set(gcf,'Position',[1000 1500 800 500])
+box on
+for ff=1:2
+data=load(strcat(path{ff},file{ff}));
 
 limits=data.limits;
 
@@ -27,7 +37,7 @@ Order=zeros(finalLength,nPoses,nRuns);
 EvalHits=zeros(finalLength,nPoses,nRuns);
 for rr=1:nRuns
     for pp=1:nPoses
-        AvoidHits(:,pp,rr)=double([data.avoidState{1,rr,pp}(:).Data]);
+%        AvoidHits(:,pp,rr)=double([data.avoidState{1,rr,pp}(:).Data]);
         for tt=1:finalLength
             
             %N=[];
@@ -71,32 +81,28 @@ threshold=0.2;
 EvalHits(EvalHits>threshold)=1;
 EvalHits(EvalHits<threshold)=0;
 
-
-
 ct=getCTs(EvalHits,timeStep);
-
-
    
-close
-hold on
-box on
-axis([0 x(1,size(x,2)) 0 200])
+%close
+% hold on
+% box on
+%axis([0 x(1,size(x,2)) 0 200])
 
 meanAvoidTimes=mean(ct,3);
 average=mean(meanAvoidTimes,2)';
 top=(max(meanAvoidTimes,[],2))';
 bottom=(min(meanAvoidTimes,[],2))';
 % % 
-colour='blue';
-if strcmp(colour,'red')
+%colour='blue';
+if strcmp(colour{ff},'red')
     fillColour = [255,99,71] / 255; 
     MeanColour = [128,0,0] / 255;  
     a=0.2;
-elseif strcmp(colour,'blue')
+elseif strcmp(colour{ff},'blue')
     fillColour = [135,206,235] / 255; 
     MeanColour = [25,25,112] / 255; 
     a=0.5;
-elseif strcmp(colour,'green')
+elseif strcmp(colour{ff},'green')
     fillColour = [34,139,34] / 255; 
     MeanColour = [85,107,47] / 255; 
     a=0.2;
@@ -106,11 +112,12 @@ x2 = [x, fliplr(x)];
 inBetween = [bottom, fliplr(top)];
 s=fill(x2, inBetween,fillColour,'LineStyle','none');
 alpha(s,a);
-plot(x,average,'color',MeanColour,'Linewidth',2)
-xlabel('Time [s]')
-ylabel('A(t)')
+h(ff)=plot(x,average,'color',MeanColour,'Linewidth',2)
+xlabel('time [s]')
+ylabel('T(t)')
 set(gca,'FontSize',20)
-hold off
+%hold off
+end
 %%
 function N=GetNeigbhours(poses,i)
     global radius

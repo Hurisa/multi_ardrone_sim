@@ -195,7 +195,7 @@ geometry_msgs::Twist setSeparation(vector<Ground*>& ground, int j, vector<double
 
 }
 
-void flocking(vector<Ground*>& ground, int j, int alpha){
+void flocking(vector<Ground*>& ground, int j, int alpha, int gamma){
 
 	vector<double> CosThetaNeighbours, SinThetaNeighbours;
 	vector<double> xPosSeparation, yPosSeparation;
@@ -217,7 +217,7 @@ void flocking(vector<Ground*>& ground, int j, int alpha){
 		//cout<<paramStr<<endl;
 		//ros::param::set(paramStr, true);
 		avoiding.data = true;
-		p.angular.z=(2*alpha*AlVel.angular.z+SeVel.angular.z)/(2*alpha+1);
+		p.angular.z=(2*alpha*AlVel.angular.z+gamma*SeVel.angular.z)/(2*alpha+gamma);
 	}
 
 	p.angular.x=0; 				p.angular.y=0; 				
@@ -237,10 +237,10 @@ int main(int argc, char** argv){
 	ros::NodeHandle nh;	
 
 	vector<string> namespaces;
-	int alpha; //Flocking parameter
+	int alpha,gamma; //Flocking parameter
 	nh.getParam("/namespaces", namespaces);
 	nh.getParam("/Alpha", alpha);
-	
+	nh.getParam("/Gamma", gamma);
 	
 	vector<Ground*> ground;
 
@@ -258,7 +258,7 @@ int main(int argc, char** argv){
 
 		for (int i = 0; i < namespaces.size(); i++)
 		{
-			flocking(ground, i, alpha);
+			flocking(ground, i, alpha, gamma);
 			PoseVector.poses[i]=ground[i]->getPose();
 		}
 		PoseVectorPub.publish(PoseVector);

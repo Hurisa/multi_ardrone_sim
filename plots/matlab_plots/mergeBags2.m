@@ -29,14 +29,20 @@ for s=1:numSubFolders
         Time=(msg.EndTime-msg.StartTime);
         msgCell=readMessages(msg,'DataFormat','struct');
 
-        while msgCell{1}.Run>msgCell{2}.Run || msgCell{1}.Run==0
+        while msgCell{1}.Run>5 || msgCell{1}.Run==0
             msgCell(1)=[];
         end
-
+        
+        a=[msgCell{:,1}];
+        b=([a.Run]);
+        msgCell(find(b==0))=[];
+        
         Nposes=size(msgCell{1,1}.Poses,2);
         Area=zeros(size(xGrid,2)-1,size(yGrid,2)-1);
 
-        for t=1:size(msgCell,1)        
+        for t=1:size(msgCell,1)  
+            
+            
             for u=1:Nposes
                 [Xplace, Yplace, xpos, ypos, qx, qy, qz, qw]=getXYQ(msgCell{t,1},u);
                 poses.position{run,u}(t,:)=[xpos, ypos];
@@ -68,14 +74,14 @@ for s=1:numSubFolders
     %bars=find(d=='/');
     %filename=strcat(d(bars(size(bars,2))+1:length(d)),'.mat');
     filename=strcat(subFolders(s).name,'.mat');
-    save(filename,'coverage','poses','Time','limits');
+    save(filename,'coverage','poses','Time','limits','-v7.3');
 
     data.coverage=coverage;
     data.poses=poses;
     data.Time=Time;
     data.limits=limits;
 
-    plotPersistCoverage(data,filename);
+    %plotPersistCoverage(data,filename);
 
 end
 
