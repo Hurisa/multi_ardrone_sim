@@ -4,8 +4,9 @@ function kCVal=kcoverage(varargin)
         [file, path] = uigetfile({'*.*'},'Select .mat file');
         data=load(strcat(path,file));
     else
-        data=varargin{1};
-        file=varargin{2};
+        data=load(varargin{1});
+%         data=varargin{1};
+%         file=varargin{2};
     end
     
     sRad=2;                          % in grid tiles
@@ -43,23 +44,6 @@ function kCVal=kcoverage(varargin)
             end
         end
     end
-    
-    %% Plotting
-    figure(1)
-    hold on
-    set(gcf,'Position',[100 100 1000 500])
-    xlabel('time [s]')
-    ylabel('#Cells')
-    set(gca,'FontSize',20)
-    axis([0 data.Time -10 300])
-    
-    timeStep=(data.Time/T);
-    x=0:timeStep:(data.Time);
-    x(length(x))=[];
-    
-    %Select colors etc
-    %build another function for comparisson between params for a single
-    %k-coverage
 end
 
 function [xG,yG]=findInGrid(pos,xGrid,yGrid)
