@@ -56,12 +56,14 @@ end
 
 
 figure
+hold on
 colormap('parula');
 meanArea=mean(Area,3);
 set(gcf,'Position',[100 100 800 800])
 CellsAboveThres=size(find(meanArea>=colorbarLimits(2)*thresh),1)/(size(meanArea,1)*size(meanArea,2));
 
 imagesc(xGrid,yGrid,meanArea);
+axis([min(xGrid), max(xGrid), min(yGrid), max(yGrid)])
 colorbar;
 caxis(colorbarLimits)
 xlabel('X [m]')

@@ -2,12 +2,47 @@
 global radius
 radius=1.5;
 
+Alignd = uigetdir(pwd, 'Select a folder with alignment .mat files');
+nAlignd = uigetdir(pwd, 'Select a folder with no_alignment .mat files');
 
-[file{1}, path{1}] = uigetfile({'*.*'},'Select .mat file with alignment');
-%data=load(strcat(path,file));
+Afiles = dir(fullfile(strcat(Alignd,'/', '*.mat')));
+NAfiles = dir(fullfile(strcat(nAlignd,'/', '*.mat')));
 
-[file{2}, path{2}] = uigetfile({'*.*'},'Select .mat file without alignment');
-%
+if size(Afiles,1)==size(NAfiles,1)
+    KCovCell=cell(2,size(Afiles,1));
+    for f=1:size(Afiles,1)        
+    data=load(strcat(strcat(Alignd,'/',Afiles(f).name));
+    
+    
+    
+    
+    
+    
+    
+    end
+else
+    disp('Number of parameter files do not match');
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 colour={'blue','red'};
 figure
 hold on
