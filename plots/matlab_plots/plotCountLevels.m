@@ -7,14 +7,20 @@ NAfiles = dir(fullfile(strcat(nAlignd,'/', '*.mat')));
 
 MeanCellCount=[];
 sd=[];
-levels=10:10:220;
+levels=10:15:220;
+
+axSimpleA=[10, 220,-10, 600];
+axSimpleNA=[10, 220,-10, 1000];
+
+axCumul=[10,220,-10,1650];
+
 for ff=1:size(Afiles,1)        
     ff
     [MeanCellCount(ff,:), sd(ff,:), MeanCellCountCumulative(ff,:), sdCumulative(ff,:)]=CountLevels(strcat(Alignd,'/',Afiles(ff).name),levels);
 end
 
-plotLevels(MeanCellCount, sd, 'true', Afiles, levels)
-plotLevels(MeanCellCountCumulative, sdCumulative, 'true', Afiles, levels)
+plotLevels(MeanCellCount, sd, 'true', Afiles, levels, axSimpleA)
+plotLevels(MeanCellCountCumulative, sdCumulative, 'true', Afiles, levels,axCumul)
 
 MeanCellCount=[];
 sd=[];
@@ -23,11 +29,12 @@ for ff=1:size(NAfiles,1)
     [MeanCellCount(ff,:), sd(ff,:), MeanCellCountCumulative(ff,:), sdCumulative(ff,:)]=CountLevels(strcat(nAlignd,'/',NAfiles(ff).name),levels);
 end
 
-plotLevels(MeanCellCount, sd, 'false', NAfiles, levels)
-plotLevels(MeanCellCountCumulative, sdCumulative, 'false', NAfiles, levels)
+
+plotLevels(MeanCellCount, sd, 'false', NAfiles, levels,axSimpleNA)
+plotLevels(MeanCellCountCumulative, sdCumulative, 'false', NAfiles, levels,axCumul)
 
 %%
-function plotLevels(MeanCellCount, sd, al, files, x)
+function plotLevels(MeanCellCount, sd, al, files, x, axs)
 
 
 if al
@@ -81,7 +88,7 @@ set(gca,'FontSize',25)
 %title(strcat(num2str(k),'-Coverage over time'))
 set(gcf,'Position',[100 100 1200 700])
 legend('boxoff')
-axis([10, 210,-10, 1650])
+axis(axs)
 hold off
 
 end
