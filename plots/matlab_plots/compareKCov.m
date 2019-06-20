@@ -1,18 +1,18 @@
-% Alignd = uigetdir(pwd, 'Select a folder with alignment .mat files');
-% nAlignd = uigetdir(pwd, 'Select a folder with no_alignment .mat files');
-% 
-% Afiles = dir(fullfile(strcat(Alignd,'/', '*.mat')));
-% NAfiles = dir(fullfile(strcat(nAlignd,'/', '*.mat')));
-% 
-% if size(Afiles,1)==size(NAfiles,1)
-%     KCovCell=cell(2,size(Afiles,1));
-%     for f=1:size(Afiles,1)        
-%         KCovCell{1,f}=kcoverage(strcat(Alignd,'/',Afiles(f).name));
-%         KCovCell{2,f}=kcoverage(strcat(nAlignd,'/',NAfiles(f).name));
-%     end
-% else
-%     disp('Number of parameter files do not match');
-% end
+Alignd = uigetdir(pwd, 'Select a folder with alignment .mat files');
+nAlignd = uigetdir(pwd, 'Select a folder with no_alignment .mat files');
+
+Afiles = dir(fullfile(strcat(Alignd,'/', '*.mat')));
+NAfiles = dir(fullfile(strcat(nAlignd,'/', '*.mat')));
+
+if size(Afiles,1)==size(NAfiles,1)
+    KCovCell=cell(2,size(Afiles,1));
+    for f=1:size(Afiles,1)        
+        KCovCell{1,f}=kcoverage(strcat(Alignd,'/',Afiles(f).name));
+        KCovCell{2,f}=kcoverage(strcat(nAlignd,'/',NAfiles(f).name));
+    end
+else
+    disp('Number of parameter files do not match');
+end
 
 T=1800;
 %% Plot 1-coverage

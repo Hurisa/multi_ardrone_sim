@@ -20,7 +20,7 @@ else
 end
 
 T=1800;
-plotinter(1,Interference,T,Afiles,NAfiles,120)
+plotinter(1,Interference,T,Afiles,NAfiles,90)
 
 %%
 function out=getInter(varargin)
@@ -128,13 +128,13 @@ for m1=1:size(Afiles,1)
     params{m1}=strcat('\mu','=',Afiles(m1).name(31:33),'   ');
 end
 
-
-vector=[160 200 240];
-for aa=1:size(averages,2)
-    h(aa)=plot(x,averages{aa}(1:length(x)),'color',vector./255,'LineWidth',2);
-    vector(1)=vector(1)-30;
-    vector(2)=vector(2)-30;
-end
+AveragesAl=averages;
+% vector=[160 200 240];
+% for aa=1:size(averages,2)
+%     h(aa)=plot(x,averages{aa}(1:length(x)),'color',vector./255,'LineWidth',2);
+%     vector(1)=vector(1)-30;
+%     vector(2)=vector(2)-30;
+% end
 
 %%%%%%
 for m1=1:size(NAfiles,1)
@@ -156,6 +156,13 @@ for m1=1:size(NAfiles,1)
     s=fill(x2, inBetween,fillColour,'LineStyle','none');
     alpha(s,a);
 
+end
+
+vector=[180 220 240];
+for aa=1:size(averages,2)
+    h(aa)=plot(x,averages{aa}(1:length(x)),'color',vector./255,'LineWidth',2);
+    vector(1)=vector(1)-45;
+    vector(2)=vector(2)-45;
 end
 
 vector=[246 150 150];
