@@ -22,14 +22,21 @@ for s=1:numSubFolders
     files = dir(fullfile(strcat(d,'/',subFolders(s).name), '*.bag'));
     Nf=size(files,1);
     coverage=cell(1,Nf);
+    carry=[];
 
     for run=1:Nf
+       
         bag=rosbag(strcat(d,'/',subFolders(s).name,'/',files(run).name));
         msg=select(bag,'Topic',strcat('/swarmState'));
         Time=(msg.EndTime-msg.StartTime);
         msgCell=readMessages(msg,'DataFormat','struct');
 
-        while msgCell{1}.Run>5 || msgCell{1}.Run==0
+        if isempty(carry)
+        else
+            msgCell=[carry;msgCell];
+        end
+        
+        while msgCell{1}.Run>10 || msgCell{1}.Run==0
             msgCell(1)=[];
         end
         
@@ -39,21 +46,26 @@ for s=1:numSubFolders
         
         Nposes=size(msgCell{1,1}.Poses,2);
         Area=zeros(size(xGrid,2)-1,size(yGrid,2)-1);
-
+        
         for t=1:size(msgCell,1)  
-            
-            
-            for u=1:Nposes
-                [Xplace, Yplace, xpos, ypos, qx, qy, qz, qw]=getXYQ(msgCell{t,1},u);
-                poses.position{run,u}(t,:)=[xpos, ypos];
-                poses.orientation{run,u}(t,:)=[qx, qy, qz, qw];
-                if (limits(1)<xpos && xpos<limits(2) && limits(3)<ypos && ypos<limits(4))
-                    if (Area(Xplace,Yplace)==0)
-                        Area(Xplace,Yplace)=1;
-                    end
-                end            
+        [run t]
+            if msgCell{t}.Run<=10 && t>100                
+                carry={msgCell{t:size(msgCell,1)}}';
+                break
+            else
+                carry=[];
+                for u=1:Nposes
+                    [Xplace, Yplace, xpos, ypos, qx, qy, qz, qw]=getXYQ(msgCell{t,1},u);
+                    poses.position{run,u}(t,:)=[xpos, ypos];
+                    poses.orientation{run,u}(t,:)=[qx, qy, qz, qw];
+                    if (limits(1)<xpos && xpos<limits(2) && limits(3)<ypos && ypos<limits(4))
+                        if (Area(Xplace,Yplace)==0)
+                            Area(Xplace,Yplace)=1;
+                        end
+                    end            
+                end
+                coverage{1,run}(t,1)=sum(sum(Area))/(size(Area,1)*size(Area,2)); 
             end
-            coverage{1,run}(t,1)=sum(sum(Area))/(size(Area,1)*size(Area,2));        
         end   
     end
     Len = cellfun(@length, coverage, 'UniformOutput', false);

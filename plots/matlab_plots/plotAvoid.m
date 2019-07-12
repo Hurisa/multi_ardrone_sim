@@ -3,10 +3,10 @@ global radius
 radius=1.5;
 
 
-[file{1}, path{1}] = uigetfile({'*.*'},'Select 1st .mat file');
+[file{1}, path{1}] = uigetfile({'*.*'},'Select .mat file with alignment');
 %data=load(strcat(path,file));
 
-[file{2}, path{2}] = uigetfile({'*.*'},'Select 2nd .mat file');
+[file{2}, path{2}] = uigetfile({'*.*'},'Select .mat file without alignment');
 %
 colour={'blue','red'};
 figure
@@ -90,8 +90,11 @@ ct=getCTs(EvalHits,timeStep);
 
 meanAvoidTimes=mean(ct,3);
 average=mean(meanAvoidTimes,2)';
-top=(max(meanAvoidTimes,[],2))';
-bottom=(min(meanAvoidTimes,[],2))';
+sd=std(ct,0,3);
+top=average+sd;
+bottom=average-sd;
+%top=(max(meanAvoidTimes,[],2))';
+%bottom=(min(meanAvoidTimes,[],2))';
 % % 
 %colour='blue';
 if strcmp(colour{ff},'red')
