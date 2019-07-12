@@ -160,7 +160,7 @@ end
 
 vector=[180 220 240];
 for aa=1:size(averages,2)
-    h(aa)=plot(x,averages{aa}(1:length(x)),'color',vector./255,'LineWidth',2);
+    h(aa)=plot(x,AveragesAl{aa}(1:length(x)),'color',vector./255,'LineWidth',2);
     vector(1)=vector(1)-45;
     vector(2)=vector(2)-45;
 end
