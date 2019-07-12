@@ -1,4 +1,4 @@
-function plotPersistCoverage(varargin)
+function [MeanCellCount, sd, MeanCellCountCumulative, sdCumulative]=CountLevels(varargin)
 
 GridSize=0.5;
 sradius=0.5; %how many times gridsize?
@@ -6,9 +6,10 @@ sradius=0.5; %how many times gridsize?
 if (size(varargin,2)==0)   
     [file, path] = uigetfile({'*.*'},'Select .mat file');
     data=load(strcat(path,file));
+    levels=10:20:220;
 else
-    data=varargin{1};
-    file=varargin{2};
+    data=load(varargin{1});
+    levels=varargin{2};
 end
 
 limits=data.limits;
@@ -35,6 +36,7 @@ Len = cellfun(@length, data.coverage, 'UniformOutput', false);
 finalLength=min([Len{:}]);
 
 for rr=1:nRuns
+    rr
     for uu=1:nUAVs
         for ggX=1:NCells-1
             for ggY=1:NCells-1
@@ -54,35 +56,37 @@ for rr=1:nRuns
 end
 
 
-
-figure
-hold on
-colormap('parula');
 meanArea=mean(Area,3);
-set(gcf,'Position',[100 100 800 800])
-CellsAboveThres=size(find(meanArea>=colorbarLimits(2)*thresh),1)/(size(meanArea,1)*size(meanArea,2));
 
-imagesc(xGrid,yGrid,meanArea);
-axis([min(xGrid), max(xGrid), min(yGrid), max(yGrid)])
-colorbar;
-caxis(colorbarLimits)
-xlabel('X [m]')
-ylabel('Y [m]')
-title({strcat('\mu = ',file(length(file)-6:length(file)-4)) })
-set(gca,'YDir','normal')
-saveas(gcf,strcat('PCov_',file(1:length(file)-4),'.png'))
-% while size(x,2)>finalLength
-%     x(:,size(x,2))=[];
-% end
+MeanCellCount=zeros(size(levels));
 
-% figure(2)
-% [X,Y] = meshgrid(xGrid(1,1:size(xGrid,2)-1),yGrid(1,1:size(yGrid,2)-1));
-% set(gcf,'Position',[100 100 800 800])
-% contourf(X,Y,meanArea,7,'k')
-% colorbar;
-% caxis(colorbarLimits)
-% title({strcat('\mu = ',file(length(file)-6:length(file)-4)) })
-% saveas(gcf,strcat('contour_PCov_',file(1:length(file)-4),'.png'))
+
+ICellCount=zeros([size(Area,3),size(levels,2)]);
+
+for zz=1:size(Area,3)    
+    for ww=1:size(ICellCount,2)
+        if ww==1
+            ICellCount(zz,ww)=sum(sum((Area(:,:,zz)<levels(ww) & Area(:,:,zz)>0)));
+        else
+            ICellCount(zz,ww)=sum(sum((Area(:,:,zz)<levels(ww) & Area(:,:,zz)>levels(ww-1))));
+        end
+    end
+    
+end
+
+for ii=1:size(MeanCellCount,2)
+
+    if ii==1
+        MeanCellCount(ii)=sum(sum((meanArea<levels(ii) & meanArea>0)));
+    else
+        MeanCellCount(ii)=sum(sum((meanArea<levels(ii) & meanArea>levels(ii-1))));
+    end
+end
+%plot(levels,MeanCellCount)
+sd=std(ICellCount,0,1);
+[MeanCellCountCumulative, sdCumulative]=CountLevelsCumulative(levels,Area);
+
+
 end
 
 
