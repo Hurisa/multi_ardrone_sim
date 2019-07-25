@@ -46,6 +46,7 @@ public:
 	
 		nh.getParam("/xLowerLimit", xLowerLimit); nh.getParam("/xUpperLimit", xUpperLimit);
 		nh.getParam("/yLowerLimit", yLowerLimit); nh.getParam("/yUpperLimit", yUpperLimit);
+		
 		FieldValue.resize(2);
 		YawComponents.resize(2);		
 		PoseSub = nh.subscribe("ParrotPose", 10, &PotentialField::getW, this);
