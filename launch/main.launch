@@ -2,8 +2,8 @@
 <launch>
 	<include file="$(find multi_ardrone_sim)/launch/world.launch">
 		<arg name="world" value="$(find multi_ardrone_sim)/worlds/empty.world"/>
-		<arg name="pause" value="false"/>
-		<arg name="ui" value="true"/>		
+		<arg name="pause" value="true"/>
+		<arg name="ui" value="false"/>		
 	</include>
 			
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
@@ -23,7 +23,7 @@
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor3"/> 
 				<arg name="x" value="3.5"/>  	
-				<arg name="y" value="0.5"/> 
+				<arg name="y" value="8"/> 
 				<arg name="yaw" value="1.57079632679"/>  	
 	</include> 
 	
@@ -79,7 +79,7 @@
 	
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
 				<arg name="uavName" value="quadrotor11"/> 
-				<arg name="x" value="1.5"/>  	
+				<arg name="x" value="6.5"/>  	
 				<arg name="y" value="0.5"/> 
 				<arg name="yaw" value="1.57079632679"/> 
 	</include>
@@ -112,8 +112,8 @@
 				<arg name="yaw" value="-1.57079632679"/>  	
 	</include> 
 
-	<node pkg="multi_ardrone_sim" 	type="flocking" 			name="flocking" 		output="screen" />	
-	<node pkg="multi_ardrone_sim" 	type="avoid_times" 		name="AvoidTimes" 	output="screen" />	
+	<node pkg="multi_ardrone_sim" 	type="reynolds" 			name="reynolds" 		output="screen" />	
+	<!-- <node pkg="multi_ardrone_sim" 	type="avoid_times" 		name="AvoidTimes" 	output="screen" />	-->
 	
 	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/markers.yaml" />
 	<rosparam command="load" 		file="$(find multi_ardrone_sim)/config/limits20.yaml" />	
@@ -125,12 +125,14 @@
 	<param name="separation_radius"		value="1.5" /> 	<!-- Separation radius -->
 	<param name="velx"					value="0.2" /> 	<!-- Forward velocity -->
 	
-	<arg name="argN"					value="1" /> 	<!-- Number of Runs -->
-	<arg name="argRunLength"	    	value="100" /> 	<!-- Run length in secs -->
+	<arg name="argN"					value="60" /> 	<!-- Number of Runs -->
+	<arg name="argRunLength"	    	value="1800" /> 	<!-- Run length in secs -->
 	<arg name="argAlpha"	    		value="1" />		<!-- Alignment parameter. Set to zero to igonre-->
+	<param name="Beta"					value="0.2	" />	    <!-- if argAlpha is 0 this should be zero as well-->
+	<param name="Gamma"				value="5" />	    <!-- Separation weight-->
 	
 	<arg name="argUseLevy"	    		value="true" />
-	<arg name="argmiu"	    			value="2.0" />
+	<arg name="argmiu"	    			value="1.2" />
 	<arg name="limit"	    			    value="20" />
 	<arg name="nAgents"	    			value="15" />
 
@@ -139,9 +141,10 @@
 	<param name="N"				value="$(arg argN)" /> 	<!-- Number of Runs -->
 	<param name="RunLength"	    value="$(arg argRunLength)" /> 	<!-- Run length in secs -->
 	<param name="Alpha"	    	value="$(arg argAlpha)" />		<!-- Alignment parameter. Set to zero to igonre-->
+
 	<param name="UseLevy"	    	value="$(arg argUseLevy)" />
 	<param name="miu"	    		value="$(arg argmiu)" />
-	<param name="Gamma"			value="3	" />	    <!-- Separation weight-->
+
 
 	<node pkg="rosbag" type="record" name="uav_pose" output="screen"
 			args="record --split --duration=$(arg argRunLength) -o $(find multi_ardrone_sim)/results/$(arg argUseLevy)_Alpha_$(arg argAlpha)_$(arg nAgents)_$(arg limit)x$(arg limit)_$(arg argN)x$(arg argRunLength)_$(arg argmiu)

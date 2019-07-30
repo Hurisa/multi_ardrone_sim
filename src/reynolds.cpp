@@ -233,10 +233,6 @@ geometry_msgs::Twist setCohesion(vector<Ground*>& ground, int j, vector<double>&
        	}
        	return p;
 
-
-
-
-
 }
 
 void flocking(vector<Ground*>& ground, int j, int alpha, int gamma, int beta){
