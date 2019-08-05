@@ -3,7 +3,7 @@
 <launch>
 
 	 <group ns="quadrotor1">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen" />
+		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field"  	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/> 
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/> 
@@ -31,15 +31,15 @@
 	</group> 
 	
 	<group ns="quadrotor5">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
-		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
-		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
-		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
+		<node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>	 
+		<node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		<node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
+		<node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
 	</group> 
 
 
 	 <group ns="quadrotor6">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen" />
+		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field"  	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/> 
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/> 
@@ -60,15 +60,15 @@
 	</group> 
 	
 	<group ns="quadrotor9">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
-		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		<node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
+		<node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
 	</group> 
 	
 	<group ns="quadrotor10">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
-		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		<node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>	 
+		<node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
 	</group> 
@@ -76,35 +76,35 @@
 
 
 	 <group ns="quadrotor11">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen" />
-		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field"  	output="screen"/> 	
+		<node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
+		<node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field"  	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/> 
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/> 
 	</group>
 
 	<group ns="quadrotor12">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
-		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		<node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>	 
+		<node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
 	</group> 
 	
 	<group ns="quadrotor13">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
-		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		<node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>	 
+		<node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
 	</group> 
 	
 	<group ns="quadrotor14">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
-		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
+		<node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>	 
+		<node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	
 	</group> 
 	
 	<group ns="quadrotor15">
-		 <node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
+		<node pkg="multi_ardrone_sim" type="altcontrol" 		name="Altitude_Control" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="potential_field" 	name="Potential_Field" 	output="screen"/> 	
 		 <node pkg="multi_ardrone_sim" type="ctrl_velocity" 	    name="Velocity_Update" 	output="screen"/>
 		 <node pkg="multi_ardrone_sim" type="levy_controller"   name="Levy_Update" 	output="screen"/>  	

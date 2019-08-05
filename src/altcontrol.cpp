@@ -41,6 +41,10 @@ private:
 
 	double altitude;
 
+	bool vicon;
+
+	string ns;
+
 public:
 
 	AltitudeControl(){
@@ -48,11 +52,20 @@ public:
 		nh.getParam("/refAltitude", refAltitude); 
 		nh.getParam("Kz", Kz); 
 
-		PoseSub = nh.subscribe("ardrone/navdata", 10, &AltitudeControl::getAltitude, this);
+		nh.getParam("useVicon",vicon);
+		ns	= ros::this_node::getNamespace();
+
+		if (vicon){
+			PoseSub = nh.subscribe("vicon/"+ns+"/"+ns, 10, &AltitudeControl::getAltitudeFromVicon, this);
+		}
+		else{
+			PoseSub = nh.subscribe("ardrone/navdata", 10, &AltitudeControl::getAltitudeFromNavData, this);
+		}
+		
 		PubVel =  nh.advertise<geometry_msgs::Twist>("ZVel", 10, this);
 	}
 
-	void getAltitude(const ardrone_autonomy::Navdata& msg){
+	void getAltitudeFromNavData(const ardrone_autonomy::Navdata& msg){
 		
 		navdata=msg;
 		// range=msg;
@@ -64,6 +77,18 @@ public:
 
 		PubVel.publish(Velocity);
 	}
+
+	void getAltitudeFromVicon(const geometry_msgs::TransformStamped& msg){
+
+		altd= msg.transform.translation.z*1000;
+		vz = Kz*(refAltitude-altd);
+	
+		Velocity.linear.x=0; 	Velocity.linear.y=0; 	Velocity.linear.z=vz;
+		Velocity.angular.x=0; 	Velocity.angular.y=0; 	Velocity.angular.z=0;
+
+		PubVel.publish(Velocity);
+	}
+	
 };
 
 int main(int argc, char** argv){

@@ -3,7 +3,7 @@
 	<include file="$(find multi_ardrone_sim)/launch/world.launch">
 		<arg name="world" value="$(find multi_ardrone_sim)/worlds/empty.world"/>
 		<arg name="pause" value="true"/>
-		<arg name="ui" value="false"/>		
+		<arg name="ui" value="true"/>		
 	</include>
 			
 	<include file="$(find multi_ardrone_sim)/launch/single_parrot.launch" >
@@ -132,7 +132,7 @@
 	<param name="Gamma"				value="5" />	    <!-- Separation weight-->
 	
 	<arg name="argUseLevy"	    		value="true" />
-	<arg name="argmiu"	    			value="1.2" />
+	<arg name="argmiu"	    			value="2" />
 	<arg name="limit"	    			    value="20" />
 	<arg name="nAgents"	    			value="15" />
 
@@ -145,7 +145,8 @@
 	<param name="UseLevy"	    	value="$(arg argUseLevy)" />
 	<param name="miu"	    		value="$(arg argmiu)" />
 
-
+	<param name="takeoff"			value="false" /><!-- Set to true to use a separate launch file just for takeoff (write that launch file) -->
+	
 	<node pkg="rosbag" type="record" name="uav_pose" output="screen"
 			args="record --split --duration=$(arg argRunLength) -o $(find multi_ardrone_sim)/results/$(arg argUseLevy)_Alpha_$(arg argAlpha)_$(arg nAgents)_$(arg limit)x$(arg limit)_$(arg argN)x$(arg argRunLength)_$(arg argmiu)
 				/swarmState "/> 

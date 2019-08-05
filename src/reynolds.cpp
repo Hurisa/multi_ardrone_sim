@@ -44,6 +44,7 @@ public:
 	Ground(ros::NodeHandle& nh, string nspace, double SwarmSize){
 		flockCmd 	= nh.advertise<geometry_msgs::Twist>(nspace+"/flocking",10, this);
 		avoidState 	= nh.advertise<std_msgs::Bool>(nspace+"/Avoiding",10, this);
+	
 
 		uavPoses = nh.subscribe(nspace+"/ParrotPose",10, &Ground::updatePose, this);
 		distances.resize(SwarmSize);	

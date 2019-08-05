@@ -62,13 +62,14 @@ public:
 		
 		PubVel 		= nh.advertise<geometry_msgs::Twist>("cmd_vel", 10, this);
 		TakeoffPub	= nh.advertise<std_msgs::Empty>("ardrone/takeoff", 10, this);
-		takeoff		= false;
+		
 
 		ns	= ros::this_node::getNamespace();
 
 		nh.getParam("/UseLevy", levy);
 		nh.getParam("/velx", velx);
 		nh.getParam("/Kw",Kw);
+		nh.getParam("/takeoff",takeoff);
 	}
 
 	void getFieldVel(const geometry_msgs::Twist& msg){		
@@ -121,13 +122,14 @@ public:
 			}
 			else{
 			    Velocity.angular=tf2::toMsg(Angflocking);
-			    Velocity.angular.z=Kw*Velocity.angular.z;
+			    //Velocity.angular.z=Kw*Velocity.angular.z;
 			    Velocity.linear.x=velx;
 				Velocity.linear.y=0;
 			}
 		}
 		Velocity.linear.z=VerticalVel.linear.z;
 
+		Velocity.angular.z=Kw*Velocity.angular.z;
 		PubVel.publish(Velocity);
 	}
 };

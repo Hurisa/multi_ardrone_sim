@@ -48,7 +48,7 @@ public:
 
 	RectifyVel(){
 	
-		CmdVelSub 	= nh.subscribe("rect_vel", 10, &RectifyVel::getCmdVel, this);
+		CmdVelSub 	= nh.subscribe("ref_vel", 10, &RectifyVel::getCmdVel, this);
 		NavVelSub	= nh.subscribe("ardrone/navdata", 10, &RectifyVel::getNavVel, this);
 		
 		PubVel 		= nh.advertise<geometry_msgs::Twist>("cmd_vel", 10, this);
@@ -71,7 +71,7 @@ public:
 
 	void UpdateVel(){	
 
-		Velocity.linear.x=Kx*(cmdVel.linear.x-realVx);
+		Velocity.linear.x=cmdVel.linear.x+Kx*(cmdVel.linear.x-realVx);
 		Velocity.linear.y=Ky*(cmdVel.linear.y-realVy);
 		Velocity.linear.z=cmdVel.linear.z;
 
