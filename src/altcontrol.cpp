@@ -56,7 +56,7 @@ public:
 		ns	= ros::this_node::getNamespace();
 
 		if (vicon){
-			PoseSub = nh.subscribe("vicon/"+ns+"/"+ns, 10, &AltitudeControl::getAltitudeFromVicon, this);
+			PoseSub = nh.subscribe("/vicon/"+ns+"/"+ns, 10, &AltitudeControl::getAltitudeFromVicon, this);
 		}
 		else{
 			PoseSub = nh.subscribe("ardrone/navdata", 10, &AltitudeControl::getAltitudeFromNavData, this);

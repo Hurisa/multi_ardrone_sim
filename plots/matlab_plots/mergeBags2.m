@@ -6,8 +6,10 @@ limitsStr=split(limitsTxt);
 limits=[str2double(limitsStr{2}),str2double(limitsStr{4}),str2double(limitsStr{6}),str2double(limitsStr{8})];
 
 global xGrid yGrid
-xGrid=limits(1):0.5:limits(2);
-yGrid=limits(3):0.5:limits(4);
+
+step=input('specifiy smallest grid size ');
+xGrid=limits(1):step:limits(2);
+yGrid=limits(3):step:limits(4);
 
 
 d = uigetdir(pwd, 'Select a folder');
@@ -27,7 +29,7 @@ for s=1:numSubFolders
     for run=1:Nf
        
         bag=rosbag(strcat(d,'/',subFolders(s).name,'/',files(run).name));
-        msg=select(bag,'Topic',strcat('/swarmState'));
+        msg=select(bag,'Topic',strcat('/SwarmState'));
         Time=(msg.EndTime-msg.StartTime);
         msgCell=readMessages(msg,'DataFormat','struct');
 

@@ -111,6 +111,9 @@ public:
 			if (Velocity.linear.x==0){
 				Velocity.linear.x=velx;
 			}
+			// else{
+			// 	Velocity.linear.x=0;
+			// }
 		}
 		else{
 			if (LevyTwist.angular.z!=0 && levy){

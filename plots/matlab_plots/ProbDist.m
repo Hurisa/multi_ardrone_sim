@@ -1,4 +1,4 @@
-function kCVal=kcoverage(varargin)
+function ProbArea=ProbD(varargin)
 
     if (size(varargin,2)==0)   
         [file, path] = uigetfile({'*.*'},'Select .mat file');
@@ -26,9 +26,9 @@ function kCVal=kcoverage(varargin)
     sRad=1/GridSize;                          % in grid tiles
     
     
-    
+    ProbArea=zeros(size(xGrid,2)-1,size(yGrid,2)-1,R,size(Ks,2)); 
     for rr=1:R
-        
+      
         for tt=1:T
             Area=zeros(size(xGrid,2)-1,size(yGrid,2)-1);
             for dd=1:D
@@ -41,9 +41,9 @@ function kCVal=kcoverage(varargin)
             end
             
             for kk=1:size(Ks,2)
-                
-               kCVal(tt,kk,rr)=sum(sum(Area==Ks(kk)));
-                
+                 [x,y]=find(Area==Ks(kk));
+               %kCVal(tt,kk,rr)=sum(sum(Area==Ks(kk)));
+                ProbArea(x,y,rr,kk)=1;
             end
         end
     end

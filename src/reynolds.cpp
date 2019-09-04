@@ -120,6 +120,7 @@ CosThetaNeighbours.resize(0); SinThetaNeighbours.resize(0);
 					xPosSeparation.push_back(ground[i]->getx()); yPosSeparation.push_back(ground[i]->gety());
 				}
 				else{
+					//cout<<"one neighbour for coehsion"<<endl;
 					xPosCohesion.push_back(ground[i]->getx()); yPosCohesion.push_back(ground[i]->gety());
 				}
 			}
@@ -252,7 +253,7 @@ void flocking(vector<Ground*>& ground, int j, int alpha, int gamma, int beta){
 	geometry_msgs::Twist p;
 	std_msgs::Bool avoiding;
 	if (SeVel.angular.z==0){
-		//ros::param::set(paramStr, false);
+		//cout<<CoVel.angular.z<<endl;
 		avoiding.data = false;
 		p.angular.z=alpha*AlVel.angular.z+beta*CoVel.angular.z;
 	}
