@@ -7,14 +7,13 @@ Afiles = dir(fullfile(strcat(Alignd,'/', '*.mat')));
 NAfiles = dir(fullfile(strcat(nAlignd,'/', '*.mat')));
 
 cellSize=input('Cell size(m) is: ');
-TPerCent=input('Time to be analysed (0 to 1): ');
 global realVar
 realVar=input('Are these real experiments? (true / false): ');
 if size(Afiles,1)==size(NAfiles,1)
     ProbAreaCell=cell(2,size(Afiles,1));
     for f=1:size(Afiles,1)        
-        ProbAreaCell{1,f}=ProbD(strcat(Alignd,'/',Afiles(f).name),cellSize,TPerCent);
-        ProbAreaCell{2,f}=ProbD(strcat(nAlignd,'/',NAfiles(f).name),cellSize,TPerCent);
+        ProbAreaCell{1,f}=ProbD(strcat(Alignd,'/',Afiles(f).name),);
+        ProbAreaCell{2,f}=ProbD(strcat(nAlignd,'/',NAfiles(f).name));
     end
 else
     disp('Number of parameter files do not match');

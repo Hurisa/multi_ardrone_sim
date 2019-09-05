@@ -3,8 +3,11 @@ function ProbArea=ProbD(varargin)
     if (size(varargin,2)==0)   
         [file, path] = uigetfile({'*.*'},'Select .mat file');
         data=load(strcat(path,file));
+        cellSize=input('Cell size(m) is: ');
     else
         data=load(varargin{1});
+        cellSize=varargin{2};
+        TPerCent=varargin{3};
 %         data=varargin{1};
 %         file=varargin{2};
     end
@@ -12,13 +15,13 @@ function ProbArea=ProbD(varargin)
 
 
     limits=data.limits; 
-    GridSize=0.05;
-    xGrid=limits(1):GridSize:limits(2);
-    yGrid=limits(3):GridSize:limits(4);
 
-    D = size(data.poses.position,2);    % Number of Drones   
-    T = size(data.poses.position{1},1); % Total time
-    R = size(data.poses.position,1);    % Number of Runs  
+    xGrid=limits(1):cellSize:limits(2);
+    yGrid=limits(3):cellSize:limits(4);
+
+    D = size(data.poses.position,2);                        % Number of Drones   
+    T = round(size(data.poses.position{1},1)*TPerCent);     % Total time
+    R = size(data.poses.position,1);                        % Number of Runs  
 
     Ks=[1 2 3];
     
