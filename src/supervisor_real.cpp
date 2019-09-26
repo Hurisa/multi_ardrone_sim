@@ -142,7 +142,7 @@ int main(int argc, char** argv){
 		}
 		else{
 			supervisor.PublishSwarmState();
-			supervisor.bag.write("/SwarmState",ros::Time::now(),supervisor.getSwarmState());
+			supervisor.bag.write("/swarmState",ros::Time::now(),supervisor.getSwarmState());
 			
 		}
 		cout<<"seconds "<< supervisor.getSecs()<<" of "<<supervisor.getRunLength() <<" of run "<<supervisor.currentT<<" of total runs "<< supervisor.getN()<<endl;

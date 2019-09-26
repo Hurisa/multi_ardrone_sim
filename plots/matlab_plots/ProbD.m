@@ -26,7 +26,7 @@ function ProbArea=ProbD(varargin)
     Ks=[1 2 3];
     
     kCVal=zeros(T,size(Ks,2),R);    
-    sRad=1/GridSize;                          % in grid tiles
+    sRad=1/cellSize;                          % in grid tiles
     
     
     ProbArea=zeros(size(xGrid,2)-1,size(yGrid,2)-1,R,size(Ks,2)); 
