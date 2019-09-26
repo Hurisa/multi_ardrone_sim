@@ -41,6 +41,7 @@ private:
 	ros::Subscriber GroundTruthSub;
 	//ros::Subscriber MarkerIdSub;
 	ros::Subscriber MarkerPoseSub;
+	ros::Subscriber ViconSub;
 	
 	ros::Publisher 	PosePub;
 
@@ -56,7 +57,7 @@ private:
 	tf2::Matrix3x3 MRot; 
 	float AxisYawRot;
 
-	bool useGroundTruth;
+	std::string useGroundTruth;
 
 public:	
 	PoseVector(){		
@@ -88,10 +89,20 @@ public:
    			MarkerAbsolutePose.push_back(MarkerPose);		
 		}	
 
-		if (useGroundTruth){GroundTruthSub 	= nh.subscribe("ground_truth/state", 10, &PoseVector::ground_truth, this);}
-		else{MarkerPoseSub 		= nh.subscribe("aruco_marker_publisher/markers", 10, &PoseVector::getCameraPose,this);}			
+		if (useGroundTruth=="gazebo"){
+			GroundTruthSub = nh.subscribe("ground_truth/state", 10, &PoseVector::ground_truth, this);
+		}
+		else if (useGroundTruth=="aruco"){
+			MarkerPoseSub = nh.subscribe("aruco_marker_publisher/markers", 10, &PoseVector::getCameraPose,this);
+		}		
+		else if (useGroundTruth=="vicon"){
+			string topic;
+			nh.getParam("localization/viconTopic",topic);
+			ViconSub = nh.subscribe(topic, 10, &PoseVector::ViconPose,this);
+		}		
+	
 
-		PosePub				= nh.advertise<geometry_msgs::Pose>("ParrotPose", 10 ,this);
+		PosePub	= nh.advertise<geometry_msgs::Pose>("ParrotPose", 10 ,this);
 	}
 
 	//// Functions for single tag publisher 
@@ -186,101 +197,6 @@ public:
 	}
 
 
-	/*
-
-	void getCameraPose(const multi_ardrone_sim::posevector& msg){		
-		
-		poses=msg;		
-		
-		vector<float> RotComponentX, RotComponentY, posX, posY, posZ;			// Estimated Parrot's pose components given by each detected Tag
-
-		for (int i = 0; i < markersID.size(); i++){	
-			if (poses.poses[i].header.seq>msgSeq[i]){							// For each new Tag msg
-
-				msgSeq[i]=poses.poses[i].header.seq;							// Update Sequence numbers for new msgs
-				// 	Tag Orienations
-				RotOrigin2Camera(RotComponentX, RotComponentY, i);				// Push back the orientation components according to the ith Tag
-				//	Tag Postions				
-				PosOrigin2Camera(posX, posY, posZ, i);
-				}		
-		}
-
-		// Computes Camera Orientation
-		float sumx = accumulate(RotComponentX.begin(), RotComponentX.end(), 0.00);
-		float sumy = accumulate(RotComponentY.begin(), RotComponentY.end(), 0.00);	
-		CameraYaw = atan2(sumy,sumx);											// Camera yaw  wrt the world frame
-		tf2::Quaternion qCamera;
-   		qCamera.setRPY(0, 0, CameraYaw); 										
-   		CameraPose.orientation = tf2::toMsg(qCamera);							// Conversion from Quaternion to msg
-   		//cout<<"estimated yaw "<< CameraYaw <<endl;
-   		RotComponentX.clear(); RotComponentY.clear();	   			
-
-   		// Computes Camera Position
-   		CameraPose.position.x=(accumulate(posX.begin(), posX.end(), 0.00) / posX.size());
-		CameraPose.position.y=(accumulate(posY.begin(), posY.end(), 0.00) / posY.size());
-		CameraPose.position.z=(accumulate(posZ.begin(), posZ.end(), 0.00) / posZ.size());
-   		//cout<<" Estimated Position "<<CameraPose.position.x<<" "<<CameraPose.position.y<<" "<<endl;
-   		posX.clear(); posY.clear(); posZ.clear(); 
-
-   		// Publishes Pose msg
-   		PosePub.publish(CameraPose); 		
-	}
-
-	void RotOrigin2Camera(vector<float>& xx, vector<float>& yy, int i){
-
-		double roll, pitch, yaw;
-
-		tf2::Quaternion QTag2Camera;
- 		tf2::fromMsg(poses.poses[i].pose.orientation, QTag2Camera);
- 		tf2::Matrix3x3 MTag2Camera(QTag2Camera);						// Rotation Matrix from Tag to the Camera
- 					
- 		tf2::Quaternion QOrgin2Tag;
- 		tf2::fromMsg(MarkerAbsolutePose[i].orientation, QOrgin2Tag);
- 		tf2::Matrix3x3 MOrgin2Tag(QOrgin2Tag);							// Rotation Matrix from the Origin to Tag
- 			 				
- 		tf2::Matrix3x3 MOrgin2Camera(MOrgin2Tag);
- 		MOrgin2Camera = MOrgin2Tag * MTag2Camera * MRot;				// Rotation Matrix from Origin to Camera
- 		MOrgin2Camera.getEulerYPR(yaw, pitch, roll);
- 		xx.push_back(cos(yaw));
- 		yy.push_back(sin(yaw));		
-
-	}
-
-	void PosOrigin2Camera(vector<float>& posX, vector<float>& posY, vector<float>& posZ, int i){
-
-		float markerX, markerY, markerZ;
-		tf2::Vector3 pos; tf2::Vector3 tempos;							// tempos 	-> Tag position read from topic ; pos -> Tag position in the Parrot's frame
-		tf2::Vector3 p; tf2::Vector3 p_dash; tf2::Vector3 T;			// p 		-> position of the Tag in the World Frame; 
-																		// p_dash 	-> position of the Tag in a Rotated World frame (no translation)
-																		// T 		-> Position of the origin of the Parrot's frame wrt a Rotated World frame
-		tf2::fromMsg(poses.poses[i].pose.position, tempos);
-				
-		pos.setZ(-tempos.getZ()); pos.setY(-tempos.getX());	
-		pos.setX(-tempos.getY()+0.15);
-		markerX=MarkerAbsolutePose[i].position.x;
-		markerY=MarkerAbsolutePose[i].position.y;
-		markerZ=MarkerAbsolutePose[i].position.z;
-		
-		p.setX(markerX); p.setY(markerY); p.setZ(markerZ);
-
-		tf2::Quaternion qCamera;				
-   		qCamera.setRPY(0, 0, CameraYaw); 
-   		tf2::Matrix3x3 MOrigin2Camera(qCamera);							// Gets the rotation matrix of the Parrot frame wrt to the World Frame
-   		tf2::Matrix3x3 MCamera2Origin;
-		MCamera2Origin=MOrigin2Camera.transpose();						// Gets the inverse rotation matrix of the Parrot frame wrt to the World Frame
-																		// (Note: For rotation matrixes transpose = inverse)
-		p_dash.setX(MOrigin2Camera.tdotx(p));							
-		p_dash.setY(MOrigin2Camera.tdoty(p));
-		p_dash.setZ(MOrigin2Camera.tdotz(p));
-
-		T=p_dash-pos;
-
-		posX.push_back(MCamera2Origin.tdotx(T));						// Rotates vector T to the Original World Frame	
-		posY.push_back(MCamera2Origin.tdoty(T));
-		posZ.push_back(-pos.getZ());
-	}
-	*/
-
 	void ground_truth(const nav_msgs::Odometry& msg){
 
 		geometry_msgs::PoseWithCovariance TruePose;
@@ -300,6 +216,23 @@ public:
 		TestPose = msg.pose.pose;
 
 		PosePub.publish(TestPose);
+	}
+
+
+	void ViconPose(const geometry_msgs::TransformStamped& msg){
+
+		geometry_msgs::Pose pose;
+		pose.position.x = msg.transform.translation.x;
+		pose.position.y = msg.transform.translation.y;
+		pose.position.z = msg.transform.translation.z;
+
+
+		pose.orientation.x = msg.transform.rotation.x;
+		pose.orientation.y = msg.transform.rotation.y;
+		pose.orientation.z = msg.transform.rotation.z;
+		pose.orientation.w = msg.transform.rotation.w;
+
+		PosePub.publish(pose);
 	}
 };
 

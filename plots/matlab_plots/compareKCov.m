@@ -1,9 +1,13 @@
+clc
+clear
 Alignd = uigetdir(pwd, 'Select a folder with alignment .mat files');
 nAlignd = uigetdir(pwd, 'Select a folder with no_alignment .mat files');
 
 Afiles = dir(fullfile(strcat(Alignd,'/', '*.mat')));
 NAfiles = dir(fullfile(strcat(nAlignd,'/', '*.mat')));
 
+global realVar
+realVar=input('Are these real experiments? (true / false): ');
 if size(Afiles,1)==size(NAfiles,1)
     KCovCell=cell(2,size(Afiles,1));
     for f=1:size(Afiles,1)        
@@ -14,23 +18,23 @@ else
     disp('Number of parameter files do not match');
 end
 
-T=1800;
+T=120;
 %% Plot 1-coverage
-plotK(1,KCovCell,T,Afiles,NAfiles,350)
+plotK(1,KCovCell,T,Afiles,NAfiles,2000)
 
 
 %% Plot 2-coverage
-plotK(2,KCovCell,T,Afiles,NAfiles,150)
+plotK(2,KCovCell,T,Afiles,NAfiles,1000)
 
 
 %% Plot 3-coverage
-plotK(3,KCovCell,T,Afiles,NAfiles,40)
+%plotK(3,KCovCell,T,Afiles,NAfiles,40)
 
 
 %%
 
 function plotK(k,KCovCell,T,Afiles,NAfiles,limitY)
-
+global realVar
 figure
 hold on
 box on
@@ -69,7 +73,11 @@ for m1=1:size(Afiles,1)
     s=fill(x2, inBetween,fillColour,'LineStyle','none');
     alpha(s,a);
    
-    params{m1}=strcat('\mu','=',Afiles(m1).name(31:33),'   ');
+    if (realVar)
+        params{m1}=strcat('\mu','=',Afiles(m1).name(1:3),'   ');
+    else
+        params{m1}=strcat('\mu','=',Afiles(m1).name(31:33),'   ');
+    end
 end
 
 

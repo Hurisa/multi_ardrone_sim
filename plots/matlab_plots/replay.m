@@ -26,15 +26,21 @@ for r=1:NRuns
         for p=1:NPoses
             x(p)=data.poses.position{r,p}(t,1);
             y(p)=data.poses.position{r,p}(t,2);
+            
+            kplot(p)=rectangle('Position',[x(p)-1.25,y(p)-1.25,2.5,2.5],'FaceColor',[255/255 230/255 203/255],'EdgeColor','none');
         end
+        
+        
         h=plot(x,y,'bo','Linewidth',2,'MarkerFaceColor','b');
         pause(stamp);
         if (t~=finalLength)
             delete(h);
+            delete(kplot);
         end
     end
     if (r~=NRuns)
         delete(h);
+        delete(kplot);
     end
 end
 
