@@ -15,14 +15,15 @@
 				<arg name="y" value="$(arg y)"/>
 				<arg name="Y" value="$(arg yaw)"/>  	
 		</include>
-		<include file="$(find aruco_ros)/launch/marker_publisher.launch" />
+		<!-- <include file="$(find aruco_ros)/launch/marker_publisher.launch" /> -->
 		<!-- <include file="$(find multi_ardrone_sim)/launch/aruco_markers.launch"/> -->
 		<!-- <include file="$(find multi_ardrone_sim)/launch/motion.launch"/> -->
 		
 		<!-- <node pkg="multi_ardrone_sim" type="getPose" name="detect_markers"/> -->
 		<node pkg="multi_ardrone_sim" type="aruco_localization" name="localization" output="screen"/> 
-		<param name="Kz"        	value="0.002" />
+		<param name="Kz"        	    value="0.002" />
 		
+		<param name="useVicon"        	value="false" />
 		
 		
 	  </group>
